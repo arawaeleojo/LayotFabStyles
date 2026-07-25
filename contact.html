@@ -229,7 +229,7 @@
         }
 
         .hero-title {
-            font-size: 3rem;
+            font-size: 4.5rem;
             line-height: 1.1;
             letter-spacing: 2px;
             margin-bottom: 1.5rem;
@@ -279,7 +279,7 @@
             }
         }
 
-        /* Contact Details Section Styling */
+        /* Contact Details Section */
         .contact-card {
             background: var(--burgundy);
             border: 1px solid rgba(200, 169, 106, 0.1);
@@ -389,44 +389,68 @@
 
         /* Contact Form Input Styles for Dark Background */
         .luxury-input {
-            background: transparent;
+            background: transparent !important;
             border: none;
             border-bottom: 1px solid rgba(247, 243, 237, 0.2);
             border-radius: 0;
             padding: 15px 0;
-            color: var(--ivory);
+            color: var(--ivory) !important;
             font-family: 'Montserrat', sans-serif;
             font-size: 0.9rem;
             transition: all 0.3s ease;
             box-shadow: none !important;
+            width: 100%;
+            display: block;
         }
 
         .luxury-input:focus {
             border-color: var(--champagne);
-            background: transparent;
-            color: var(--ivory);
+            background: transparent !important;
+            color: var(--ivory) !important;
             outline: none;
         }
 
         .luxury-input::placeholder {
-            color: rgba(247, 243, 237, 0.5);
+            color: rgba(247, 243, 237, 0.5) !important;
             font-weight: 300;
             letter-spacing: 1px;
         }
 
+        /* WebKit Autofill Fix (Prevents white background on autocomplete/typing) */
+        .luxury-input:-webkit-autofill,
+        .luxury-input:-webkit-autofill:hover,
+        .luxury-input:-webkit-autofill:focus,
+        .luxury-input:-webkit-autofill:active {
+            -webkit-box-shadow: 0 0 0 30px var(--chocolate) inset !important;
+            -webkit-text-fill-color: var(--ivory) !important;
+            transition: background-color 5000s ease-in-out 0s;
+        }
+
+        /* Upgraded Dropdown (Select) Styling */
         select.luxury-input {
-            color: rgba(247, 243, 237, 0.5);
+            color: rgba(247, 243, 237, 0.5) !important;
+            cursor: pointer;
+            appearance: none !important;
+            -webkit-appearance: none !important;
+            -moz-appearance: none !important;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath fill='none' stroke='%23C8A96A' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m2 5 6 6 6-6'/%3E%3C/svg%3E") !important;
+            background-repeat: no-repeat !important;
+            background-position: right 0px center !important;
+            background-size: 16px 12px !important;
+            padding-right: 2rem !important;
         }
 
         select.luxury-input:focus,
         select.luxury-input:valid {
-            color: var(--ivory);
+            color: var(--ivory) !important;
         }
 
+        /* Option dropdown menu styling */
         select.luxury-input option {
-            background: var(--chocolate);
-            color: var(--ivory);
-            padding: 10px;
+            background-color: var(--chocolate) !important;
+            color: var(--ivory) !important;
+            padding: 15px;
+            font-size: 0.95rem;
         }
 
         .btn-luxury {
@@ -477,10 +501,8 @@
             align-items: center;
             gap: 15px;
             opacity: 0;
-            /* Hidden initially */
             transform: translateY(20px);
             pointer-events: none;
-            /* Prevent clicks while hidden */
             transition: opacity 0.6s ease, transform 0.6s ease;
         }
 
@@ -491,8 +513,8 @@
         }
 
         .whatsapp-message {
-            background: var(--burgundy);
-            color: var(--white);
+            background: var(--white);
+            color: var(--chocolate);
             padding: 10px 20px;
             border-radius: 20px;
             font-family: 'Montserrat', sans-serif;
@@ -503,7 +525,6 @@
             animation: float-msg 3s ease-in-out infinite;
         }
 
-        /* Little pointer triangle */
         .whatsapp-message::after {
             content: '';
             position: absolute;
@@ -512,7 +533,7 @@
             transform: translateY(-50%);
             border-width: 6px 0 6px 6px;
             border-style: solid;
-            border-color: transparent transparent transparent var(--burgundy);
+            border-color: transparent transparent transparent var(--white);
         }
 
         @keyframes float-msg {
@@ -588,7 +609,6 @@
 
             .whatsapp-message {
                 display: none;
-                /* Hide message on small screens */
             }
         }
 
@@ -819,8 +839,9 @@
                                         placeholder="Your Email" required>
                                 </div>
                                 <div class="col-12">
-                                    <select name="service" class="form-select luxury-input interactive" required>
-                                        <option value="" disabled selected>What service do you need?</option>
+                                    <!-- Customized luxury dropdown select -->
+                                    <select name="service" class="form-control luxury-input interactive" required>
+                                        <option value="" disabled selected>What are you looking for?</option>
                                         <option value="General Inquiry">General Inquiry</option>
                                         <option value="Bespoke / Custom Fit">Sew A Fit (Bespoke)</option>
                                         <option value="Ready-to-Wear">Ready-to-Wear</option>
@@ -937,7 +958,7 @@
 
     <!-- Floating WhatsApp Container -->
     <div class="whatsapp-container" id="whatsapp-container">
-        <div class="whatsapp-message">Let's Bring Your Vision to Life <span class="ms-1">👋</span></div>
+        <div class="whatsapp-message">Hello! Chat with us <span class="ms-1">👋</span></div>
         <a href="https://wa.me/2348102957887" class="whatsapp-float interactive" target="_blank"
             aria-label="Chat with us on WhatsApp">
             <i class="bi bi-whatsapp"></i>
