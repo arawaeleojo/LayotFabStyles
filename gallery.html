@@ -1,0 +1,1008 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Layot Fab Styles | The Collections</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap"
+        rel="stylesheet">
+
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+
+    <!-- AOS CSS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <!-- Lightbox2 CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/css/lightbox.min.css" rel="stylesheet">
+    <link rel="shortcut icon" href="assets/img/faviconw.png" type="image/x-icon">
+
+
+    <style>
+        :root {
+            --burgundy: #52171B;
+            --chocolate: #2A1E1A;
+            --ivory: #F7F3ED;
+            --champagne: #C8A96A;
+            --charcoal: #222222;
+            --white: #FFFFFF;
+            /* Restricted color applied only to newsletter per design rules */
+            --newsletter-orange: #D35400;
+        }
+
+        /* Base Styles & Typography (Strictly Light Themed) */
+        body,
+        html {
+            margin: 0;
+            padding: 0;
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--white);
+            color: var(--charcoal);
+            scroll-behavior: smooth;
+            cursor: none;
+            overflow-x: hidden;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6,
+        .font-playfair {
+            font-family: 'Playfair Display', serif;
+            color: var(--chocolate);
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            cursor: none;
+        }
+
+        section {
+            padding: 120px 0;
+            position: relative;
+        }
+
+        /* Utility Backgrounds */
+        .bg-white {
+            background-color: var(--white) !important;
+        }
+
+        .bg-ivory {
+            background-color: var(--ivory) !important;
+        }
+
+        .bg-chocolate {
+            background-color: var(--chocolate) !important;
+        }
+
+        .text-chocolate {
+            color: var(--chocolate) !important;
+        }
+
+        .text-burgundy {
+            color: var(--burgundy) !important;
+        }
+        .text-champagne {
+            color: var(--champagne) !important;
+        }
+
+        /* Custom Cursor */
+        .cursor-dot {
+            width: 8px;
+            height: 8px;
+            background-color: var(--burgundy);
+            border-radius: 50%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            transform: translate(-50%, -50%);
+            pointer-events: none;
+            z-index: 10000;
+            transition: width 0.2s, height 0.2s, background-color 0.2s;
+        }
+
+        .cursor-outline {
+            width: 40px;
+            height: 40px;
+            border: 1px solid var(--burgundy);
+            border-radius: 50%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            transform: translate(-50%, -50%);
+            pointer-events: none;
+            z-index: 9999;
+            transition: width 0.2s, height 0.2s;
+        }
+
+        a:hover~.cursor-dot,
+        button:hover~.cursor-dot,
+        .interactive:hover~.cursor-dot {
+            width: 60px;
+            height: 60px;
+            background-color: rgba(94, 31, 44, 0.1);
+            border-color: transparent;
+        }
+
+        /* Scroll Progress */
+        .scroll-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 3px;
+            background: var(--champagne);
+            width: 0%;
+            z-index: 10001;
+        }
+
+        /* Navigation */
+        .navbar {
+            transition: background-color 0.4s ease, padding 0.4s ease;
+            padding: 25px 0;
+            background: transparent;
+        }
+
+        .navbar.scrolled {
+            background: rgba(42, 30, 26, 0.98);
+            backdrop-filter: blur(10px);
+            padding: 15px 0;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Sleek Offcanvas Sidebar */
+        .offcanvas.bg-chocolate {
+            background-color: var(--chocolate);
+            border-left: 1px solid rgba(200, 169, 106, 0.2);
+        }
+
+        .sidebar-link {
+            color: var(--white);
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.85rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            padding: 15px 0;
+            display: block;
+            border-bottom: 1px solid rgba(247, 243, 237, 0.05);
+            transition: 0.3s ease;
+            position: relative;
+        }
+
+        .sidebar-link::after {
+            content: '';
+            position: absolute;
+            bottom: -1px;
+            left: 0;
+            width: 0%;
+            height: 1px;
+            background: var(--champagne);
+            transition: 0.4s ease;
+        }
+
+        .sidebar-link:hover {
+            color: var(--champagne);
+            padding-left: 10px;
+        }
+
+        .sidebar-link:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        #hero {
+            height: 100vh;
+            background: url('assets/img/hero3.jpg') no-repeat center 30%/cover;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--white);
+        }
+
+        #hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.6));
+        }
+
+        .hero-content {
+            z-index: 2;
+            max-width: 900px;
+            padding: 0 20px;
+        }
+
+        .hero-title {
+            font-size: 3rem;
+            letter-spacing: 2px;
+            margin-bottom: 1.5rem;
+            color: var(--white);
+            line-height: 1.2;
+        }
+
+        .hero-title i {
+            color: var(--champagne);
+            font-style: italic;
+        }
+
+        .hero-tagline {
+            font-size: 0.9rem;
+            letter-spacing: 4px;
+            color: var(--champagne);
+            text-transform: uppercase;
+            margin-bottom: 1.5rem;
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 2;
+            animation: bounce 2s infinite;
+            color: var(--champagne);
+        }
+
+        @keyframes bounce {
+
+            0%,
+            20%,
+            50%,
+            80%,
+            100% {
+                transform: translateY(0) translateX(-50%);
+            }
+
+            40% {
+                transform: translateY(-15px) translateX(-50%);
+            }
+
+            60% {
+                transform: translateY(-7px) translateX(-50%);
+            }
+        }
+
+        /* Buttons */
+        .btn-luxury {
+            display: inline-block;
+            padding: 15px 35px;
+            border: 1px solid var(--burgundy);
+            color: var(--burgundy);
+            background: transparent;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 0.75rem;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .btn-luxury::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: var(--burgundy);
+            transform: translate(-50%, -50%);
+            border-radius: 50%;
+            transition: width 0.6s ease, height 0.6s ease;
+            z-index: -1;
+        }
+
+        .btn-luxury:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+
+        .btn-luxury:hover {
+            color: var(--white) !important;
+        }
+
+        .btn-luxury.light {
+            border-color: var(--white);
+            color: var(--white);
+        }
+
+        .btn-luxury.light::before {
+            background: var(--white);
+        }
+
+        .btn-luxury.light:hover {
+            color: var(--chocolate) !important;
+        }
+
+        .btn-luxury.champagne {
+            border-color: var(--champagne);
+            color: var(--champagne);
+        }
+
+        .btn-luxury.champagne::before {
+            background: var(--champagne);
+        }
+
+        .btn-luxury.champagne:hover {
+            color: var(--chocolate) !important;
+        }
+
+        /* Section Headers */
+        .section-header {
+            margin-bottom: 80px;
+            text-align: center;
+        }
+
+        .section-header h2 {
+            font-size: 3rem;
+            position: relative;
+            display: inline-block;
+            padding-bottom: 15px;
+            margin-bottom: 10px;
+            color: var(--chocolate);
+        }
+
+        .section-header h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 40px;
+            height: 2px;
+            background: var(--burgundy);
+        }
+
+        .section-subtitle {
+            font-size: 0.75rem;
+            letter-spacing: 4px;
+            color: var(--champagne);
+            text-transform: uppercase;
+            display: block;
+            margin-bottom: 15px;
+        }
+
+        /* Fixed-height Image Containers */
+        .fixed-img-container {
+            width: 100%;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .fixed-img {
+            width: 100%;
+            height: 450px;
+            object-fit: cover;
+            transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        /* Category Cards */
+        .category-card {
+            display: block;
+            position: relative;
+            border: 1px solid transparent;
+            transition: all 0.4s ease;
+        }
+
+        .category-card:hover {
+            border-color: var(--champagne);
+        }
+
+        .category-card:hover .fixed-img {
+            transform: scale(1.05);
+        }
+
+        .category-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to top, rgba(42, 30, 26, 0.9), transparent 60%);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 30px;
+            color: var(--white);
+        }
+
+        .category-count {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(255, 255, 255, 0.9);
+            color: var(--chocolate);
+            font-size: 0.7rem;
+            padding: 5px 10px;
+            letter-spacing: 1px;
+            border-radius: 20px;
+        }
+
+        /* Masonry Gallery & Filters */
+        .sticky-filter {
+            position: sticky;
+            top: 80px;
+            z-index: 10;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 20px 0;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+            margin-bottom: 50px;
+        }
+
+        .filter-btn {
+            background: transparent;
+            border: none;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 0.75rem;
+            color: var(--charcoal);
+            padding: 8px 15px;
+            margin: 0 5px;
+            transition: 0.3s;
+            position: relative;
+        }
+
+        .filter-btn::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 1px;
+            background: var(--burgundy);
+            transition: 0.3s;
+        }
+
+        .filter-btn:hover::after,
+        .filter-btn.active::after {
+            width: 100%;
+        }
+
+        .filter-btn.active {
+            color: var(--burgundy);
+            font-weight: 500;
+        }
+
+        /* True CSS Grid for strict left-to-right filling (UPDATED TO 3 PER ROW) */
+        .masonry-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        @media (max-width: 991px) {
+            .masonry-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 575px) {
+            .masonry-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            display: block;
+            background: var(--ivory);
+            transition: opacity 0.3s ease;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            display: block;
+            transition: transform 0.8s ease;
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(42, 30, 26, 0.7);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            color: var(--white);
+            text-align: center;
+            border: 1px solid transparent;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+            border-color: rgba(200, 169, 106, 0.5);
+        }
+
+        .gallery-overlay .bi-arrows-angle-expand {
+            opacity: 0;
+            transform: translateY(10px);
+            transition: all 0.4s ease 0.1s;
+        }
+
+        .gallery-item:hover .gallery-overlay .bi-arrows-angle-expand {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Client Spotlight */
+        .spotlight-card {
+            display: flex;
+            align-items: center;
+            background: var(--ivory);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            padding: 0;
+            transition: 0.4s;
+        }
+
+        .spotlight-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+        }
+
+        .spotlight-img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+
+        /* IG Feed */
+        .ig-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+        }
+
+        .ig-item {
+            aspect-ratio: 1;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .ig-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: 0.5s;
+        }
+
+        .ig-item:hover img {
+            transform: scale(1.05);
+        }
+
+        /* Footer & Newsletter */
+        footer {
+            background-color: var(--chocolate);
+            color: var(--ivory);
+            padding: 100px 0 40px;
+        }
+
+        footer h3,
+        footer h6 {
+            color: var(--white) !important;
+        }
+
+        .footer-link {
+            color: rgba(247, 243, 237, 0.6);
+            transition: 0.3s;
+            font-size: 0.85rem;
+        }
+
+        .footer-link:hover {
+            color: var(--champagne);
+            padding-left: 5px;
+        }
+
+        /* Strict application of the user's orange color rule */
+        .newsletter-btn {
+            background-color: var(--newsletter-orange);
+            color: var(--white);
+            border: none;
+            transition: 0.3s ease;
+        }
+
+        .newsletter-btn:hover {
+            background-color: #ba4a00;
+            color: var(--white);
+        }
+
+        .newsletter-input:focus {
+            border-color: var(--newsletter-orange) !important;
+            box-shadow: none;
+        }
+    </style>
+</head>
+
+<body data-bs-spy="scroll" data-bs-target="#sidebarNav" data-bs-offset="100">
+
+    <!-- Custom Cursor -->
+    <div class="cursor-dot" id="cursor-dot"></div>
+    <div class="cursor-outline" id="cursor-outline"></div>
+
+    <!-- Scroll Progress -->
+    <div class="scroll-progress" id="scroll-progress"></div>
+
+    <!-- Sleek Sidebar Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
+        <div class="container-fluid px-4 px-lg-5">
+            <a class="navbar-brand interactive" href="index.html">
+                <img src="assets/img/logo.png" alt="Layot Logo" style="height: 35px; object-fit: contain;">
+            </a>
+            <button class="navbar-toggler border-0 shadow-none interactive d-block" type="button"
+                data-bs-toggle="offcanvas" data-bs-target="#sidebarNav">
+                <i class="bi bi-list text-white fs-1"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Offcanvas Sidebar -->
+    <div class="offcanvas offcanvas-end bg-chocolate" tabindex="-1" id="sidebarNav">
+        <div class="offcanvas-header border-bottom border-light border-opacity-10 p-4">
+            <h5 class="offcanvas-title font-playfair text-champagne fs-4">Layot Fab Styles</h5>
+            <button type="button" class="btn-close btn-close-white shadow-none interactive" data-bs-dismiss="offcanvas"
+                aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body p-4 d-flex flex-column justify-content-between">
+            <ul class="list-unstyled">
+                <li><a class="sidebar-link interactive" href="index.html">01. Home</a></li>
+                <li><a class="sidebar-link interactive" href="about.html">02. About</a></li>
+                <li><a class="sidebar-link interactive text-champagne" href="gallery.html">03. Gallery</a></li>
+                <li><a class="sidebar-link interactive" href="contact.html">04. Contact</a></li>
+            </ul>
+            <div class="mt-auto border-top border-light border-opacity-10 pt-4 text-center">
+                <div class="d-flex justify-content-center gap-4">
+                    <a href="https://www.instagram.com/layot_styles/"
+                        class="text-champagne hover-opacity-100 interactive"><i class="bi bi-instagram fs-5"></i></a>
+                    <a href="https://www.tiktok.com/@layot_styles1"
+                        class="text-champagne hover-opacity-100 interactive"><i class="bi bi-tiktok fs-5"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <header id="hero">
+        <div class="container hero-content ps-lg-5">
+            <span class="hero-tagline" data-aos="fade-down" data-aos-duration="1500">Our Collections</span>
+            <h1 class="hero-title font-playfair" data-aos="fade-right" data-aos-duration="2000">Every Piece<br>Tells A
+                <i>Story</i>
+            </h1>
+            <p class="lead mb-5 opacity-75 fw-light" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="300">
+                Discover timeless creations crafted <br> with precision, elegance, and attention to
+                every detail.</p>
+        </div>
+        <a href="#gallery" class="scroll-indicator interactive">
+            <i class="bi bi-chevron-down fs-3"></i>
+        </a>
+    </header>
+
+    <!-- Section 3 & 4: Filter System & The Gallery (Dynamic Injection) -->
+    <section id="gallery" class="bg-ivory pt-0">
+        <div class="sticky-filter text-center shadow-sm">
+            <div class="container overflow-auto white-space-nowrap pb-2">
+                <button class="filter-btn active interactive" data-filter="all">All</button>
+                <button class="filter-btn interactive" data-filter="ready">Ready-to-Wear</button>
+                <button class="filter-btn interactive" data-filter="children">Children</button>
+                <button class="filter-btn interactive" data-filter="traditional">Trad</button>
+            </div>
+        </div>
+
+        <div class="container pt-4">
+            <div class="masonry-grid" id="masonry-gallery">
+                <!-- Javascript will populate this based on the active filter state -->
+            </div>
+
+            <div class="text-center mt-5 pt-4">
+                <button id="load-more-btn" class="btn-luxury interactive"><i class="bi bi-arrow-clockwise me-2"></i>
+                    Load More Designs</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 6: Client Spotlight -->
+    <section id="spotlight" class="bg-ivory">
+        <div class="container">
+            <div class="section-header">
+                <h2>Client Spotlight</h2>
+                <span class="section-subtitle mt-3">Real Women. Real Elegance.</span>
+            </div>
+
+            <div class="row g-4">
+                <div class="col-lg-6" data-aos="fade-up">
+                    <div class="spotlight-card row g-0">
+                        <div class="col-5">
+                            <img src="assets/img/client1.jpeg" class="spotlight-img" alt="Tolu">
+                        </div>
+                        <div class="col-7 p-4 p-md-5 d-flex flex-column justify-content-center">
+                            <span class="text-champagne small text-uppercase tracking-widest mb-3">Corporate Wear</span>
+                            <p class="text-muted small mb-0">"My outfit was everything I dreamed of and more. The
+                                fit was absolutely pristine."</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
+                    <div class="spotlight-card row g-0">
+                        <div class="col-5">
+                            <img src="assets/img/client2.jpeg" class="spotlight-img" alt="Chioma">
+                        </div>
+                        <div class="col-7 p-4 p-md-5 d-flex flex-column justify-content-center">
+                            <span class="text-champagne small text-uppercase tracking-widest mb-3">Trad</span>
+                            <p class="text-muted small mb-0">"The whole look was elegant, unique and unforgettable. I
+                                stole the show!"</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 9: Instagram Feed -->
+    <section id="instagram" class="bg-ivory">
+        <div class="container text-center">
+            <h2 class="font-playfair text-chocolate mb-2">@layot_fab_styles</h2>
+            <p class="text-muted mb-5">Follow our journey and discover daily inspiration.</p>
+
+            <div class="ig-grid mb-5 mx-auto" style="max-width: 800px;" data-aos="fade-up">
+                <a href="#" class="ig-item interactive"><img src="assets/img/hero.jpg" alt="IG 1"></a>
+                <a href="#" class="ig-item interactive"><img src="assets/img/hero4.jpg" alt="IG 2"></a>
+                <a href="#" class="ig-item interactive"><img src="assets/img/hero2.jpg" alt="IG 3"></a>
+                <a href="#" class="ig-item interactive"><img src="assets/img/hero3.jpg" alt="IG 4"></a>
+                <a href="#" class="ig-item interactive"><img src="assets/img/gallery/trad4.jpg" alt="IG 5"></a>
+                <a href="#" class="ig-item interactive"><img src="assets/img/gallery/rtw5.jpg" alt="IG 6"></a>
+            </div>
+
+            <a href="https://www.instagram.com/layot_styles/" class="btn-luxury interactive center"><i
+                    class="bi bi-instagram me-2"></i> Follow On Instagram</a>
+        </div>
+    </section>
+
+    <!-- Section 10: Call To Action -->
+    <section class="text-center position-relative"
+        style="background: url('assets/img/hero.jpg') no-repeat center center/cover; padding: 150px 0;">
+        <div class="position-absolute top-0 start-0 w-100 h-100"
+            style="background: linear-gradient(to right, rgba(94, 31, 44, 0.9), rgba(42, 30, 26, 0.8));"></div>
+        <div class="container position-relative z-2" data-aos="zoom-in" data-aos-duration="1500">
+            <h2 class="font-playfair display-4 text-white mb-4">Ready To Wear Something <i>Extraordinary?</i></h2>
+            <p class="lead text-white-50 mb-5 max-w-700 mx-auto">Book a consultation and let's create a timeless piece
+                just for you.</p>
+            <div class="d-flex justify-content-center gap-4">
+                <a href="#contact" class="btn-luxury champagne border-champagne interactive">Book Consultation</a>
+                <a href="#contact" class="btn-luxury light interactive d-none d-sm-inline-block">Contact Us</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="container">
+            <div class="row g-5 mb-5 pb-4 border-bottom" style="border-color: rgba(247, 243, 237, 0.1) !important;">
+                <div class="col-lg-4">
+                    <img src="assets/img/logo.png" alt="Layot Logo" class="mb-4" style="height: 40px; object-fit: contain;">
+                    <p class="text-ivory opacity-75 pe-lg-4 small">A luxury fashion house dedicated to empowering
+                        elegance, celebrating femininity, and crafting timeless pieces.</p>
+                </div>
+    
+                <div class="col-lg-2 col-md-4">
+                    <h6 class="text-ivory text-uppercase tracking-widest mb-4" style="font-size: 0.75rem;">Quick Links
+                    </h6>
+                    <ul class="list-unstyled">
+                        <li class="mb-3"><a href="index.html" class="footer-link interactive">Home</a></li>
+                        <li class="mb-3"><a href="about.html" class="footer-link interactive">About Us</a></li>
+                        <li class="mb-3"><a href="gallery.html" class="footer-link interactive">Gallery</a></li>
+                        <li class="mb-3"><a href="contact.html" class="footer-link interactive">Contact</a></li>
+                    </ul>
+                </div>
+    
+                <div class="col-lg-2 col-md-4">
+                    <h6 class="text-ivory text-uppercase tracking-widest mb-4" style="font-size: 0.75rem;">Services</h6>
+                    <ul class="list-unstyled">
+                        <li class="mb-3"><a href="gallery.html" class="footer-link interactive">Corporate Wear</a></li>
+                        <li class="mb-3"><a href="gallery.html" class="footer-link interactive">Ready-to-Wear</a></li>
+                        <li class="mb-3"><a href="gallery.html" class="footer-link interactive">Bespoke</a></li>
+                        <li class="mb-3"><a href="gallery.html" class="footer-link interactive">Bridal Wear</a></li>
+                    </ul>
+                </div>
+    
+                <div class="col-lg-4 col-md-4">
+                    <h6 class="text-ivory text-uppercase tracking-widest mb-4" style="font-size: 0.75rem;">Contact Us
+                    </h6>
+                    <ul class="list-unstyled text-ivory opacity-75 small lh-lg mb-4">
+                        <li class="mb-2"><i class="bi bi-telephone text-champagne me-3"></i> 0810 295 7887</li>
+                        <li class="mb-2"><i class="bi bi-envelope text-champagne me-3"></i> akindiyot@gmail.com
+                        </li>
+                        <li class="mb-2"><i class="bi bi-geo-alt text-champagne me-3"></i> Akobo, Ibadan, Nigeria.</li>
+                    </ul>
+                    <div class="d-flex gap-4">
+                        <a href="https://www.instagram.com/layot_styles/"
+                            class="text-ivory opacity-50 hover-opacity-100 interactive"><i
+                                class="bi bi-instagram fs-5"></i></a>
+                        <a href="https://www.tiktok.com/@layot_styles1"
+                            class="text-ivory opacity-50 hover-opacity-100 interactive"><i
+                                class="bi bi-tiktok fs-5"></i></a>
+                    </div>
+                </div>
+            </div>
+    
+            <div class="d-flex flex-column flex-md-row justify-content-between align-items-center">
+                <p class="text-ivory opacity-50 small mb-2 mb-md-0" style="font-size: 0.65rem; letter-spacing: 1px;">
+                    &copy; 2026 LAYOT FAB STYLES. DESIGNED BY <a href="https://eleojoarawa.vercel.app/">ELEOJO ARAWA.</a>
+                </p>
+                <a href="#hero"
+                    class="text-champagne small text-uppercase tracking-widest interactive d-flex align-items-center"
+                    style="font-size: 0.65rem;">
+                    Back to Top <i class="bi bi-arrow-up ms-2"></i>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/js/lightbox-plus-jquery.min.js"></script>
+
+    <script>
+        // Data for Grid Gallery
+        const galleryData = [
+            // Ready-to-Wear
+            { img: "assets/img/gallery/rtw1.jpg", cat: "ready", name: "Modern Silhouette 1", catLabel: "Ready-to-Wear" },
+            { img: "assets/img/gallery/rtw2.jpg", cat: "ready", name: "Modern Silhouette 2", catLabel: "Ready-to-Wear" },
+            { img: "assets/img/gallery/rtw3.jpg", cat: "ready", name: "Modern Silhouette 3", catLabel: "Ready-to-Wear" },
+            { img: "assets/img/gallery/rtw4.jpg", cat: "ready", name: "Modern Silhouette 4", catLabel: "Ready-to-Wear" },
+            { img: "assets/img/gallery/rtw5.jpg", cat: "ready", name: "Modern Silhouette 5", catLabel: "Ready-to-Wear" },
+            // Children
+            { img: "assets/img/gallery/children.jpg", cat: "children", name: "Little Stars 1", catLabel: "Children" },
+            { img: "assets/img/gallery/children1.jpg", cat: "children", name: "Little Stars 2", catLabel: "Children" },
+            { img: "assets/img/gallery/children2.jpg", cat: "children", name: "Little Stars 3", catLabel: "Children" },
+            { img: "assets/img/gallery/children3.jpg", cat: "children", name: "Little Stars 4", catLabel: "Children" },
+            { img: "assets/img/gallery/children4.jpg", cat: "children", name: "Little Stars 5", catLabel: "Children" },
+            // Traditional
+            { img: "assets/img/gallery/trad.jpg", cat: "traditional", name: "Heritage Collection 1", catLabel: "Traditional" },
+            { img: "assets/img/gallery/trad1.jpg", cat: "traditional", name: "Heritage Collection 2", catLabel: "Traditional" },
+            { img: "assets/img/gallery/trad2.jpg", cat: "traditional", name: "Heritage Collection 3", catLabel: "Traditional" },
+            { img: "assets/img/gallery/trad3.jpg", cat: "traditional", name: "Heritage Collection 4", catLabel: "Traditional" },
+            { img: "assets/img/gallery/trad4.jpg", cat: "traditional", name: "Heritage Collection 5", catLabel: "Traditional" }
+        ];
+
+        let loadedIndex = 0;
+        let currentFilter = 'all';
+        const itemsPerLoad = 6; // Load 2 rows of 3 at a time
+        const grid = document.getElementById('masonry-gallery');
+        const loadBtn = document.getElementById('load-more-btn');
+
+        // Robust Gallery Injection with Data Filtering
+        function renderGalleryItems() {
+            // Step 1: Establish what array of data we are currently pulling from
+            let filteredData = galleryData;
+            if (currentFilter !== 'all') {
+                filteredData = galleryData.filter(item => item.cat === currentFilter);
+            }
+
+            let html = '';
+            let count = 0;
+
+            // Step 2: Grab the next batch from the filtered array
+            for (; loadedIndex < filteredData.length && count < itemsPerLoad; loadedIndex++, count++) {
+                const item = filteredData[loadedIndex];
+                html += `
+                <a href="${item.img}" data-lightbox="gallery" data-title="${item.name}" class="gallery-item interactive filter-item" data-aos="fade-up">
+                    <img src="${item.img}" alt="${item.name}">
+                    <div class="gallery-overlay">
+                        <i class="bi bi-arrows-angle-expand fs-4 text-champagne mb-3"></i>
+                        <h5 class="font-playfair text-white m-0">${item.name}</h5>
+                        <p class="small text-champagne text-uppercase mt-2">${item.catLabel}</p>
+                    </div>
+                </a>`;
+            }
+
+            // Step 3: Inject the batch
+            grid.insertAdjacentHTML('beforeend', html);
+
+            // Step 4: Determine if we need the 'Load More' button anymore
+            if (loadedIndex >= filteredData.length) {
+                loadBtn.style.display = 'none';
+            } else {
+                loadBtn.style.display = 'inline-block';
+            }
+
+            // Refresh AOS animations for newly injected DOM nodes
+            if (typeof AOS !== 'undefined') {
+                setTimeout(() => AOS.refresh(), 100);
+            }
+        }
+
+        // Initialize grid on window load
+        window.addEventListener('load', () => {
+            renderGalleryItems();
+        });
+
+        // Load More button execution
+        loadBtn.addEventListener('click', () => {
+            renderGalleryItems();
+        });
+
+        // Filter Logic Execution
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Update active button state
+                filterBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+
+                // Set new filter, clear grid, reset index, and render fresh
+                currentFilter = btn.getAttribute('data-filter');
+                grid.innerHTML = '';
+                loadedIndex = 0;
+                renderGalleryItems();
+            });
+        });
+
+        // Init AOS
+        AOS.init({
+            duration: 1000,
+            easing: 'ease-out-cubic',
+            once: false,
+            mirror: true,
+            offset: 50
+        });
+
+        // Custom Cursor Logic
+        const cursorDot = document.getElementById("cursor-dot");
+        const cursorOutline = document.getElementById("cursor-outline");
+        window.addEventListener("mousemove", function (e) {
+            const posX = e.clientX;
+            const posY = e.clientY;
+            cursorDot.style.left = `${posX}px`;
+            cursorDot.style.top = `${posY}px`;
+            cursorOutline.animate({
+                left: `${posX}px`,
+                top: `${posY}px`
+            }, { duration: 500, fill: "forwards" });
+        });
+
+        // Navbar & Scroll Progress
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('mainNav');
+            const scrollProgress = document.getElementById('scroll-progress');
+
+            const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = (winScroll / height) * 100;
+            scrollProgress.style.width = scrolled + "%";
+
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+    </script>
+</body>
+
+</html>

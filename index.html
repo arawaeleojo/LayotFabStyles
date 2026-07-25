@@ -1,0 +1,1071 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Layot Fab Styles | Luxury Fashion</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap"
+        rel="stylesheet">
+
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+
+    <!-- AOS CSS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <!-- Lightbox2 CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/css/lightbox.min.css" rel="stylesheet">
+    <link rel="shortcut icon" href="assets/img/faviconw.png" type="image/x-icon">
+
+
+    <style>
+        :root {
+            --burgundy: #52171B;
+            --chocolate: #2A1E1A;
+            --ivory: #F7F3ED;
+            --champagne: #C8A96A;
+            --charcoal: #222222;
+            --white: #FFFFFF;
+            /* Restricted color applied only to newsletter per design rules */
+            --newsletter-orange: #D35400;
+        }
+
+        /* Base Styles & Typography */
+        body,
+        html {
+            margin: 0;
+            padding: 0;
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--ivory);
+            color: var(--charcoal);
+            scroll-behavior: smooth;
+            cursor: none;
+            overflow-x: hidden;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6,
+        .font-playfair {
+            font-family: 'Playfair Display', serif;
+            color: var(--chocolate);
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            cursor: none;
+        }
+
+        section {
+            padding: 120px 0;
+            position: relative;
+        }
+
+        /* Utility Backgrounds */
+        .bg-white {
+            background-color: var(--white) !important;
+        }
+
+        .bg-ivory {
+            background-color: var(--ivory) !important;
+        }
+
+        .bg-chocolate {
+            background-color: var(--chocolate) !important;
+        }
+
+        .text-chocolate {
+            color: var(--chocolate) !important;
+        }
+
+        .text-champagne {
+            color: var(--champagne) !important;
+        }
+
+        /* Custom Cursor */
+        .cursor-dot {
+            width: 8px;
+            height: 8px;
+            background-color: var(--burgundy);
+            border-radius: 50%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            transform: translate(-50%, -50%);
+            pointer-events: none;
+            z-index: 10000;
+            transition: width 0.2s, height 0.2s, background-color 0.2s;
+        }
+
+        .cursor-outline {
+            width: 40px;
+            height: 40px;
+            border: 1px solid var(--burgundy);
+            border-radius: 50%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            transform: translate(-50%, -50%);
+            pointer-events: none;
+            z-index: 9999;
+            transition: width 0.2s, height 0.2s;
+        }
+
+        a:hover~.cursor-dot,
+        button:hover~.cursor-dot,
+        .interactive:hover~.cursor-dot {
+            width: 50px;
+            height: 50px;
+            background-color: rgba(94, 31, 44, 0.1);
+            border-color: transparent;
+        }
+
+        /* Page Loader */
+        #loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: var(--burgundy);
+            z-index: 99999;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            transition: opacity 1s ease;
+        }
+
+        /* Scroll Progress */
+        .scroll-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 3px;
+            background: var(--champagne);
+            width: 0%;
+            z-index: 10001;
+        }
+
+        /* Navigation */
+        .navbar {
+            transition: background-color 0.4s ease, padding 0.4s ease;
+            padding: 25px 0;
+            background: transparent;
+        }
+
+        .navbar.scrolled {
+            background: rgba(42, 30, 26, 0.95);
+            /* Chocolate dark background on scroll */
+            backdrop-filter: blur(10px);
+            padding: 15px 0;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        }
+
+       /* Sleek Offcanvas Sidebar */
+        .offcanvas.bg-chocolate {
+            background-color: var(--chocolate);
+            border-left: 1px solid rgba(200, 169, 106, 0.2);
+        }
+
+        .sidebar-link {
+            color: var(--white);
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.85rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            padding: 15px 0;
+            display: block;
+            border-bottom: 1px solid rgba(247, 243, 237, 0.05);
+            transition: 0.3s ease;
+            position: relative;
+        }
+
+        .sidebar-link::after {
+            content: '';
+            position: absolute;
+            bottom: -1px;
+            left: 0;
+            width: 0%;
+            height: 1px;
+            background: var(--champagne);
+            transition: 0.4s ease;
+        }
+
+        .sidebar-link:hover {
+            color: var(--champagne);
+            padding-left: 10px;
+        }
+
+        .sidebar-link:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        #hero {
+            height: 100vh;
+            background: url('assets/img/hero.jpg') no-repeat center center/cover;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--white);
+        }
+
+        #hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.6));
+            /* Chocolate gradient */
+        }
+
+        .hero-content {
+            z-index: 2;
+        }
+
+        .hero-title {
+            font-size: 3rem;
+            font-weight: bold;
+            letter-spacing: 2px;
+            margin-bottom: 1rem;
+            color: var(--white);
+        }
+
+        .hero-title i {
+            color: var(--champagne);
+            font-style: italic;
+        }
+
+        .hero-tagline {
+            font-size: 0.9rem;
+            letter-spacing: 4px;
+            color: var(--champagne);
+            text-transform: uppercase;
+            margin-bottom: 2rem;
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 2;
+            animation: bounce 2s infinite;
+            color: var(--champagne);
+        }
+
+        @keyframes bounce {
+
+            0%,
+            20%,
+            50%,
+            80%,
+            100% {
+                transform: translateY(0) translateX(-50%);
+            }
+
+            40% {
+                transform: translateY(-15px) translateX(-50%);
+            }
+
+            60% {
+                transform: translateY(-7px) translateX(-50%);
+            }
+        }
+
+        /* Buttons (Burgundy Focused) */
+        .btn-luxury {
+            display: inline-block;
+            padding: 15px 35px;
+            border: 1px solid var(--burgundy);
+            color: var(--burgundy);
+            background: transparent;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 0.8rem;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .btn-luxury::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: var(--burgundy);
+            transform: translate(-50%, -50%);
+            border-radius: 50%;
+            transition: width 0.6s ease, height 0.6s ease;
+            z-index: -1;
+        }
+
+        .btn-luxury:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+
+        .btn-luxury:hover {
+            color: var(--white) !important;
+        }
+
+        .btn-luxury.light {
+            border-color: var(--white);
+            color: var(--white);
+        }
+
+        .btn-luxury.light::before {
+            background: var(--white);
+        }
+
+        .btn-luxury.light:hover {
+            color: var(--chocolate) !important;
+        }
+
+        .btn-luxury.champagne {
+            border-color: var(--champagne);
+            color: var(--champagne);
+        }
+
+        .btn-luxury.champagne::before {
+            background: var(--champagne);
+        }
+
+        .btn-luxury.champagne:hover {
+            color: var(--chocolate) !important;
+        }
+
+        /* Card Styles */
+        .luxury-card {
+            background: var(--white);
+            padding: 40px;
+            border-radius: 0;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.03);
+            transition: all 0.4s ease;
+            height: 100%;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .luxury-card:hover {
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.08);
+        }
+
+        /* Fixed-height image components */
+        .fixed-img-container {
+            width: 100%;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .fixed-img {
+            width: 100%;
+            height: 350px;
+            object-fit: cover;
+            transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .fixed-img-large {
+            width: 100%;
+            height: 550px;
+            object-fit: cover;
+        }
+
+        .fixed-img-icon {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        /* Masonry Gallery */
+        .masonry-grid {
+            column-count: 3;
+            column-gap: 1.5rem;
+        }
+
+        .masonry-item {
+            break-inside: avoid;
+            margin-bottom: 1.5rem;
+            position: relative;
+            overflow: hidden;
+            display: block;
+        }
+
+        .masonry-item img {
+            width: 100%;
+            display: block;
+            transition: 0.5s ease;
+        }
+
+        .masonry-item .gallery-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(42, 30, 26, 0.8);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            color: var(--white);
+            text-align: center;
+        }
+
+        .masonry-item:hover img {
+            transform: scale(1.05);
+        }
+
+        .masonry-item:hover .gallery-overlay {
+            opacity: 1;
+        }
+
+        @media (max-width: 991px) {
+            .masonry-grid {
+                column-count: 2;
+            }
+        }
+
+        @media (max-width: 575px) {
+            .masonry-grid {
+                column-count: 1;
+            }
+        }
+
+        .icon-wrapper {
+            width: 100px;
+            height: 100px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(94, 31, 44, .05);
+            border-bottom: 1px solid rgba(94, 31, 44, .1);
+            transition: .4s;
+        }
+
+        .icon-wrapper i {
+            font-size: 3rem;
+            color: var(--burgundy);
+            transition: .4s;
+        }
+
+        .luxury-card:hover .icon-wrapper {
+            background: var(--burgundy);
+        }
+
+        .luxury-card:hover .icon-wrapper i {
+            color: #fff;
+            transform: scale(1.15);
+        }
+
+        /* Section Headers */
+        .section-header {
+            margin-bottom: 80px;
+            text-align: center;
+        }
+
+        .section-header h2 {
+            font-size: 3rem;
+            position: relative;
+            display: inline-block;
+            padding-bottom: 15px;
+            margin-bottom: 10px;
+        }
+
+        .section-header h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 40px;
+            height: 2px;
+            background: var(--burgundy);
+        }
+
+        .section-subtitle {
+            font-size: 0.75rem;
+            letter-spacing: 4px;
+            color: var(--champagne);
+            text-transform: uppercase;
+            display: block;
+        }
+
+        /* Exciting & Sleek Testimonials */
+        .testimonial-card {
+            padding: 60px 40px;
+            background: var(--chocolate);
+            border: 1px solid rgba(200, 169, 106, 0.2);
+            position: relative;
+            text-align: center;
+            transition: all 0.4s ease;
+            z-index: 1;
+            overflow: hidden;
+            height: 100%;
+        }
+
+        .testimonial-card::before {
+            content: '”';
+            font-family: 'Playfair Display', serif;
+            font-size: 10rem;
+            position: absolute;
+            top: -40px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: rgba(200, 169, 106, 0.05);
+            line-height: 1;
+            z-index: -1;
+            transition: all 0.4s ease;
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--champagne);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .testimonial-card:hover::before {
+            color: rgba(200, 169, 106, 0.15);
+            top: -30px;
+        }
+
+        .testimonial-text {
+            color: var(--ivory);
+            font-style: italic;
+            opacity: 0.9;
+        }
+
+        /* CTA Section with Background Image */
+        .cta-section {
+            background: url('assets/img/hero2.jpg') no-repeat center center/cover;
+            background-attachment: fixed;
+            position: relative;
+            padding: 150px 0;
+        }
+
+        .cta-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to right, rgba(94, 31, 44, 0.9), rgba(42, 30, 26, 0.9));
+            z-index: 1;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--chocolate);
+            color: var(--ivory);
+            padding: 100px 0 40px;
+        }
+
+        footer h3,
+        footer h6 {
+            color: var(--white) !important;
+        }
+
+        .footer-link {
+            color: rgba(247, 243, 237, 0.6);
+            transition: 0.3s;
+            font-size: 0.85rem;
+        }
+
+        .footer-link:hover {
+            color: var(--champagne);
+            padding-left: 5px;
+        }
+    </style>
+</head>
+
+<body data-bs-spy="scroll" data-bs-target="#sidebarNav" data-bs-offset="100">
+
+    <!-- Page Loader -->
+    <!-- <div id="loader">
+        <h2 class="font-playfair tracking-widest text-white text-uppercase">Layot Fab Styles</h2>
+    </div> -->
+
+    <!-- Custom Cursor -->
+    <div class="cursor-dot" id="cursor-dot"></div>
+    <div class="cursor-outline" id="cursor-outline"></div>
+
+    <!-- Scroll Progress -->
+    <div class="scroll-progress" id="scroll-progress"></div>
+
+    <!-- Sleek Sidebar Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
+        <div class="container-fluid px-4 px-lg-5">
+            <a class="navbar-brand interactive" href="index.html">
+                <img src="assets/img/logo.png" alt="Layot Logo" style="height: 35px; object-fit: contain;">
+            </a>
+            <button class="navbar-toggler border-0 shadow-none interactive d-block" type="button"
+                data-bs-toggle="offcanvas" data-bs-target="#sidebarNav">
+                <i class="bi bi-list text-white fs-1"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Offcanvas Sidebar -->
+    <div class="offcanvas offcanvas-end bg-chocolate" tabindex="-1" id="sidebarNav">
+        <div class="offcanvas-header border-bottom border-light border-opacity-10 p-4">
+            <h5 class="offcanvas-title font-playfair text-champagne fs-4">Layot Fab Styles</h5>
+            <button type="button" class="btn-close btn-close-white shadow-none interactive" data-bs-dismiss="offcanvas"
+                aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body p-4 d-flex flex-column justify-content-between">
+            <ul class="list-unstyled">
+                <li><a class="sidebar-link interactive text-champagne" href="index.html">01. Home</a></li>
+                <li><a class="sidebar-link interactive" href="about.html">02. About</a></li>
+                <li><a class="sidebar-link interactive" href="gallery.html">03. Gallery</a></li>
+                <li><a class="sidebar-link interactive" href="contact.html">04. Contact</a></li>
+            </ul>
+            <div class="mt-auto border-top border-light border-opacity-10 pt-4 text-center">
+                <div class="d-flex justify-content-center gap-4">
+                    <a href="https://www.instagram.com/layot_styles/"
+                        class="text-champagne hover-opacity-100 interactive"><i class="bi bi-instagram fs-5"></i></a>
+                    <a href="https://www.tiktok.com/@layot_styles1" class="text-champagne hover-opacity-100 interactive"><i
+                            class="bi bi-tiktok fs-5"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <header id="hero">
+        <div class="container hero-content">
+            <p class="hero-tagline" data-aos="fade-down" data-aos-duration="1500">Layot Fab Styles</p>
+            <h1 class="hero-title" data-aos="zoom-in" data-aos-duration="2000">Timeless Designs.<br>Tailored For Every
+                <i>Occasion.</i>
+            </h1>
+            <div class="d-flex justify-content-center gap-4 mt-5" data-aos="fade-up" data-aos-duration="1500"
+                data-aos-delay="500">
+                <a href="#collections" class="btn-luxury champagne interactive border-white text-white">View
+                    Collection</a>
+                <a href="contact.html" class="btn-luxury light interactive d-none d-sm-inline-block">Book
+                    Consultation</a>
+            </div>
+        </div>
+        <a href="#introduction" class="scroll-indicator interactive">
+            <i class="bi bi-chevron-down fs-3"></i>
+        </a>
+    </header>
+
+    <!-- Introduction Section -->
+    <section id="introduction">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-5" data-aos="fade-right">
+                    <span class="section-subtitle mb-3">Welcome</span>
+                    <h2 class="font-playfair display-5 mb-4">The Art of Style</h2>
+                    <p class="lead mb-4">Layot Fab Styles creates timeless pieces that celebrate elegance, confidence,
+                        and individuality through expert craftsmanship and attention to detail.</p>
+                    <p>Every piece is designed to make you look and feel exceptional, tailored perfectly to flatter your
+                        unique silhouette. From power dressing to breathtaking bridal moments, our vision is
+                        unconditionally focused on celebrating you.</p>
+                    <a href="#founder" class="btn-luxury mt-4 interactive">Meet The Founder</a>
+                </div>
+                <div class="col-lg-6 offset-lg-1 mt-5 mt-lg-0" data-aos="fade-left">
+                    <div class="tilt" data-tilt data-tilt-max="5" data-tilt-speed="400">
+                        <img src="assets/img/hero2.jpg" class="fixed-img shadow-lg" alt="Luxury Fashion">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Collections -->
+    <section id="collections" class="bg-white">
+        <div class="container">
+            <div class="section-header">
+                <h2>Collections</h2>
+                <span class="section-subtitle mt-3">Discover The Craft</span>
+            </div>
+            <div class="row g-5">
+                <div class="col-md-4" data-aos="fade-up">
+                    <a href="gallery.html" class="luxury-card p-0 overflow-hidden d-block interactive tilt" data-tilt
+                        data-tilt-max="2">
+                        <div class="fixed-img-container" style="height: 450px;">
+                            <img src="assets/img/gallery/trad.jpg" class="fixed-img w-100 h-100" alt="Bespoke">
+                        </div>
+                        <div class="p-4 text-center">
+                            <h4 class="font-playfair mb-2 text-burgundy">Trad</h4>
+                            <p class="small text-muted mb-0">Custom designs tailored to you.</p>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+                    <a href="gallery.html" class="luxury-card p-0 overflow-hidden d-block interactive tilt" data-tilt
+                        data-tilt-max="2">
+                        <div class="fixed-img-container" style="height: 450px;">
+                            <img src="assets/img/gallery/rtw3.jpg" class="fixed-img w-100 h-100" alt="Corporate Wear">
+                        </div>
+                        <div class="p-4 text-center">
+                            <h4 class="font-playfair mb-2 text-burgundy">Corporate Wear</h4>
+                            <p class="small text-muted mb-0">Power dressing made elegant.</p>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+                    <a href="gallery.html" class="luxury-card p-0 overflow-hidden d-block interactive tilt" data-tilt
+                        data-tilt-max="2">
+                        <div class="fixed-img-container" style="height: 450px;">
+                            <img src="assets/img/gallery/children.jpg" class="fixed-img w-100 h-100" alt="Children">
+                        </div>
+                        <div class="p-4 text-center">
+                            <h4 class="font-playfair mb-2 text-burgundy">Children Wear</h4>
+                            <p class="small text-muted mb-0">For your unforgettable moments.</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Meet The Founder -->
+    <section id="founder">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 mt-5 mt-lg-0" data-aos="fade-left">
+                    <div class="tilt" data-tilt data-tilt-max="5" data-tilt-speed="400">
+                        <img src="assets/img/founder2.jpg" class="fixed-img shadow-lg" alt="Luxury Fashion">
+                    </div>
+                </div>
+                <div class="col-lg-6" data-aos="fade-right">
+                    <span class="section-subtitle mb-3">Creative Director</span>
+                    <h2 class="font-playfair display-5 mb-4">Akindiyo Titilayo</h2>
+                    <p class="lead mb-4">A fashion designer with a passion for turning ideas into timeless pieces. With
+                        years of experience and an eye for detail, she founded Layot Fab Styles to empower individuals
+                        through style and elegance.</p>
+                    <ul class="list-unstyled mb-5 text-muted">
+                        <li class="mb-2"><i class="bi bi-check-lg text-burgundy me-2"></i> Passionate about
+                            craftsmanship</li>
+                        <li class="mb-2"><i class="bi bi-check-lg text-burgundy me-2"></i> Believes in individuality
+                        </li>
+                        <li class="mb-2"><i class="bi bi-check-lg text-burgundy me-2"></i> Committed to supreme quality
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Layot -->
+    <section id="why-choose-us" class="bg-white py-5">
+        <div class="container">
+
+            <div class="section-header text-center mb-5">
+                <h2 class="font-playfair">The Layot Standard</h2>
+                <span class="section-subtitle mt-3 d-block">Why Choose Us</span>
+            </div>
+
+            <div class="row g-4">
+                <!-- Premium Fabrics -->
+                <div class="col-md-6 col-lg-4" data-aos="fade-up">
+                    <div class="luxury-card text-center p-0 tilt interactive" data-tilt>
+                        <div class="icon-wrapper">
+                            <i class="bi bi-stars"></i>
+                        </div>
+                        <div class="p-4">
+                            <h5 class="font-playfair mb-3 text-chocolate">Premium Fabrics</h5>
+                            <p class="text-muted small mb-0">We source only the finest materials for absolute comfort
+                                and flawless drape.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bespoke Craftsmanship -->
+                <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="luxury-card text-center p-0 tilt interactive" data-tilt>
+                        <div class="icon-wrapper">
+                            <i class="bi bi-scissors"></i>
+                        </div>
+                        <div class="p-4">
+                            <h5 class="font-playfair mb-3 text-chocolate">Bespoke Craftsmanship</h5>
+                            <p class="text-muted small mb-0">Constructed by master tailors with obsessive attention to
+                                the finest detail.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Perfect Fit -->
+                <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="luxury-card text-center p-0 tilt interactive" data-tilt>
+                        <div class="icon-wrapper">
+                            <i class="bi bi-person-check"></i>
+                        </div>
+                        <div class="p-4">
+                            <h5 class="font-playfair mb-3 text-chocolate">The Perfect Fit</h5>
+                            <p class="text-muted small mb-0">A personalized measuring process for a silhouette that
+                                enhances your unique form.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Works (Editorial Masonry) -->
+    <section id="gallery">
+        <div class="container">
+            <div class="section-header">
+                <h2>Featured Works</h2>
+                <span class="section-subtitle mt-3">Editorial Gallery</span>
+            </div>
+
+            <div class="masonry-grid">
+                <a href="assets/img/gallery/rtw1.jpg" data-lightbox="featured-works" data-title="The Modern Silhouette"
+                    class="masonry-item interactive" data-aos="fade-up">
+                    <img src="assets/img/gallery/rtw1.jpg" alt="Fashion 1">
+                </a>
+                <a href="assets/img/gallery/children.jpg" data-lightbox="featured-works" data-title="Ivory Dreams"
+                    class="masonry-item interactive" data-aos="fade-up" data-aos-delay="100">
+                    <img src="assets/img/gallery/children.jpg" alt="Fashion 2">
+                </a>
+                <a href="assets/img/gallery/trad.jpg" data-lightbox="featured-works" data-title="Executive Precision"
+                    class="masonry-item interactive" data-aos="fade-up" data-aos-delay="200">
+                    <img src="assets/img/gallery/trad.jpg" alt="Fashion 3">
+                </a>
+                <a href="assets/img/gallery/children3.jpg" data-lightbox="featured-works"
+                    data-title="Heritage Collection" class="masonry-item interactive" data-aos="fade-up"
+                    data-aos-delay="300">
+                    <img src="assets/img/gallery/children3.jpg" alt="Fashion 4">
+                </a>
+                <a href="assets/img/gallery/rtw4.jpg" data-lightbox="featured-works" data-title="Midnight Allure"
+                    class="masonry-item interactive" data-aos="fade-up" data-aos-delay="400">
+                    <img src="assets/img/gallery/rtw4.jpg" alt="Fashion 5">
+                </a>
+                <a href="assets/img/gallery/rtw5.jpg" data-lightbox="featured-works" data-title="Midnight Allure"
+                    class="masonry-item interactive" data-aos="fade-up" data-aos-delay="400">
+                    <img src="assets/img/gallery/rtw5.jpg" alt="Fashion 6">
+                </a>
+            </div>
+
+            <div class="text-center mt-5 pt-4" data-aos="fade-up">
+                <a href="gallery.html" class="btn-luxury interactive">Explore Full Gallery &rarr;</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sleek & Exciting Testimonials -->
+    <section id="testimonials" class="bg-white">
+        <div class="container">
+            <div class="section-header">
+                <h2>What Our Clients Say</h2>
+                <span class="section-subtitle mt-3">Words Of Love</span>
+            </div>
+
+            <div class="row g-4">
+                <div class="col-lg-4" data-aos="fade-up">
+                    <div class="testimonial-card tilt interactive" data-tilt data-tilt-max="2">
+                        <div class="text-champagne fs-5 mb-4">
+                            <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
+                                class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
+                                class="bi bi-star-fill"></i>
+                        </div>
+                        <p class="testimonial-text mb-4 lh-lg fw-light">"She understood my vision perfectly. The dress
+                            was absolutely stunning and I felt so incredibly confident on my special day."</p>
+                        <h6 class="mb-0 font-playfair tracking-widest text-uppercase small testimonial-author">Amaka O.
+                        </h6>
+                    </div>
+                </div>
+                <div class="col-lg-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="testimonial-card tilt interactive" data-tilt data-tilt-max="2">
+                        <div class="text-champagne fs-5 mb-4">
+                            <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
+                                class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
+                                class="bi bi-star-fill"></i>
+                        </div>
+                        <p class="testimonial-text mb-4 lh-lg fw-light">"The quality, the fit, the attention to detail —
+                            everything was beyond my expectations. A truly luxurious experience."</p>
+                        <h6 class="mb-0 font-playfair tracking-widest text-uppercase small testimonial-author">Eleojo A.
+                        </h6>
+                    </div>
+                </div>
+                <div class="col-lg-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="testimonial-card tilt interactive" data-tilt data-tilt-max="2">
+                        <div class="text-champagne fs-5 mb-4">
+                            <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
+                                class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
+                                class="bi bi-star-fill"></i>
+                        </div>
+                        <p class="testimonial-text mb-4 lh-lg fw-light">"Layot Fab Styles is my go-to for every major
+                            occasion. She never disappoints and consistently delivers pure elegance!"</p>
+                        <h6 class="mb-0 font-playfair tracking-widest text-uppercase small testimonial-author">Temi D.
+                        </h6>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Upgraded Call to Action -->
+    <section class="text-center cta-section">
+        <div class="cta-overlay"></div>
+        <div class="container position-relative z-2" data-aos="zoom-in" data-aos-duration="1500">
+            <span class="section-subtitle mb-3 text-champagne">Begin Your Journey</span>
+            <h2 class="font-playfair display-5 text-white mb-4">Ready To Create Something Beautiful?</h2>
+            <p class="lead text-white-50 mb-5 max-w-700 mx-auto fw-light">Elevate your wardrobe with timeless pieces
+                crafted exactly <br> for you. Let us bring your vision to life.</p>
+            <a href="contact.html"
+                class="btn-luxury champagne interactive px-5 py-3 border-champagne text-white">Book Us</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="container">
+            <div class="row g-5 mb-5 pb-4 border-bottom" style="border-color: rgba(247, 243, 237, 0.1) !important;">
+                <div class="col-lg-4">
+                    <img src="assets/img/logo.png" alt="Layot Logo" class="mb-4"
+                        style="height: 40px; object-fit: contain;">
+                    <p class="text-ivory opacity-75 pe-lg-4 small">A luxury fashion house dedicated to empowering
+                        elegance, celebrating femininity, and crafting timeless pieces.</p>
+                </div>
+
+                <div class="col-lg-2 col-md-4">
+                    <h6 class="text-ivory text-uppercase tracking-widest mb-4" style="font-size: 0.75rem;">Quick Links
+                    </h6>
+                    <ul class="list-unstyled">
+                        <li class="mb-3"><a href="index.html" class="footer-link interactive">Home</a></li>
+                        <li class="mb-3"><a href="about.html" class="footer-link interactive">About Us</a></li>
+                        <li class="mb-3"><a href="gallery.html" class="footer-link interactive">Gallery</a></li>
+                        <li class="mb-3"><a href="contact.html" class="footer-link interactive">Contact</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-lg-2 col-md-4">
+                    <h6 class="text-ivory text-uppercase tracking-widest mb-4" style="font-size: 0.75rem;">Services</h6>
+                    <ul class="list-unstyled">
+                        <li class="mb-3"><a href="gallery.html" class="footer-link interactive">Corporate Wear</a></li>
+                        <li class="mb-3"><a href="gallery.html" class="footer-link interactive">Ready-to-Wear</a></li>
+                        <li class="mb-3"><a href="gallery.html" class="footer-link interactive">Bespoke</a></li>
+                        <li class="mb-3"><a href="gallery.html" class="footer-link interactive">Bridal Wear</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-lg-4 col-md-4">
+                    <h6 class="text-ivory text-uppercase tracking-widest mb-4" style="font-size: 0.75rem;">Contact Us
+                    </h6>
+                    <ul class="list-unstyled text-ivory opacity-75 small lh-lg mb-4">
+                        <li class="mb-2"><i class="bi bi-telephone text-champagne me-3"></i> 0810 295 7887</li>
+                        <li class="mb-2"><i class="bi bi-envelope text-champagne me-3"></i> akindiyot@gmail.com
+                        </li>
+                        <li class="mb-2"><i class="bi bi-geo-alt text-champagne me-3"></i> Akobo, Ibadan, Nigeria.</li>
+                    </ul>
+                    <div class="d-flex gap-4">
+                        <a href="https://www.instagram.com/layot_styles/"
+                            class="text-ivory opacity-50 hover-opacity-100 interactive"><i
+                                class="bi bi-instagram fs-5"></i></a>
+                        <a href="https://www.tiktok.com/@layot_styles1"
+                            class="text-ivory opacity-50 hover-opacity-100 interactive"><i
+                                class="bi bi-tiktok fs-5"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="d-flex flex-column flex-md-row justify-content-between align-items-center">
+                <p class="text-ivory opacity-50 small mb-2 mb-md-0" style="font-size: 0.65rem; letter-spacing: 1px;">
+                    &copy; 2026 LAYOT FAB STYLES. DESIGNED BY <a href="https://eleojoarawa.vercel.app/">ELEOJO ARAWA.</a></p>
+                <a href="#hero"
+                    class="text-champagne small text-uppercase tracking-widest interactive d-flex align-items-center"
+                    style="font-size: 0.65rem;">
+                    Back to Top <i class="bi bi-arrow-up ms-2"></i>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.0/vanilla-tilt.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/js/lightbox-plus-jquery.min.js"></script>
+
+    <script>
+        // Page Loader
+        window.addEventListener('load', () => {
+            const loader = document.getElementById('loader');
+            if (loader) {
+                loader.style.opacity = '0';
+                setTimeout(() => {
+                    loader.style.display = 'none';
+                }, 1000);
+            }
+        });
+
+        // Init AOS
+        AOS.init({
+            duration: 1000,
+            easing: 'ease-out-cubic',
+            once: false,
+            mirror: true,
+            offset: 50
+        });
+
+        // Vanilla Tilt Init
+        VanillaTilt.init(document.querySelectorAll(".tilt"), {
+            max: 5,
+            speed: 400,
+            glare: true,
+            "max-glare": 0.05,
+        });
+
+        // Custom Cursor Logic
+        const cursorDot = document.getElementById("cursor-dot");
+        const cursorOutline = document.getElementById("cursor-outline");
+
+        window.addEventListener("mousemove", function (e) {
+            const posX = e.clientX;
+            const posY = e.clientY;
+
+            cursorDot.style.left = `${posX}px`;
+            cursorDot.style.top = `${posY}px`;
+
+            cursorOutline.animate({
+                left: `${posX}px`,
+                top: `${posY}px`
+            }, { duration: 500, fill: "forwards" });
+        });
+
+        // Navbar & Scroll Progress
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('mainNav');
+            const scrollProgress = document.getElementById('scroll-progress');
+
+            const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = (winScroll / height) * 100;
+            scrollProgress.style.width = scrolled + "%";
+
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+    </script>
+</body>
+
+</html>

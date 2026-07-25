@@ -1,0 +1,1195 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Layot Fab Styles | Brand Guidelines</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap"
+        rel="stylesheet">
+
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+
+    <!-- AOS CSS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <!-- Lightbox2 CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/css/lightbox.min.css" rel="stylesheet">
+    <link rel="shortcut icon" href="assets/img/faviconw.png" type="image/x-icon">
+
+
+    <style>
+        :root {
+            --burgundy: #52171B;
+            --chocolate: #2A1E1A;
+            --ivory: #F7F3ED;
+            --champagne: #C8A96A;
+            --charcoal: #222222;
+            --white: #FFFFFF;
+            /* Restricted color applied only to newsletter per design rules */
+            --newsletter-orange: #D35400;
+        }
+
+        /* Base Styles & Typography */
+        body,
+        html {
+            margin: 0;
+            padding: 0;
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--white);
+            color: var(--charcoal);
+            scroll-behavior: smooth;
+            cursor: none;
+            overflow-x: hidden;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6,
+        .font-playfair {
+            font-family: 'Playfair Display', serif;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            cursor: none;
+        }
+
+        section {
+            padding: 120px 0;
+            position: relative;
+        }
+
+        /* Utility Backgrounds */
+        .bg-white {
+            background-color: var(--white) !important;
+        }
+
+        .bg-ivory {
+            background-color: var(--ivory) !important;
+        }
+
+        .bg-chocolate {
+            background-color: var(--chocolate) !important;
+        }
+
+        .bg-burgundy {
+            background-color: var(--burgundy) !important;
+        }
+
+        .text-chocolate {
+            color: var(--chocolate) !important;
+        }
+
+        .text-burgundy {
+            color: var(--burgundy) !important;
+        }
+
+        .text-champagne {
+            color: var(--champagne) !important;
+        }
+
+        /* Custom Cursor */
+        .cursor-dot {
+            width: 8px;
+            height: 8px;
+            background-color: var(--champagne);
+            border-radius: 50%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            transform: translate(-50%, -50%);
+            pointer-events: none;
+            z-index: 10000;
+            transition: width 0.2s, height 0.2s, background-color 0.2s;
+        }
+
+        .cursor-outline {
+            width: 40px;
+            height: 40px;
+            border: 1px solid var(--champagne);
+            border-radius: 50%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            transform: translate(-50%, -50%);
+            pointer-events: none;
+            z-index: 9999;
+            transition: width 0.2s, height 0.2s;
+        }
+
+        a:hover~.cursor-dot,
+        button:hover~.cursor-dot,
+        .interactive:hover~.cursor-dot {
+            width: 60px;
+            height: 60px;
+            background-color: rgba(200, 169, 106, 0.2);
+            border-color: transparent;
+        }
+
+        /* Scroll Progress */
+        .scroll-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 3px;
+            background: var(--champagne);
+            width: 0%;
+            z-index: 10001;
+        }
+
+        /* Navigation */
+        .navbar {
+            transition: background-color 0.4s ease, padding 0.4s ease;
+            padding: 25px 0;
+            background: transparent;
+        }
+
+        .navbar.scrolled {
+            background: rgba(42, 30, 26, 0.98);
+            backdrop-filter: blur(10px);
+            padding: 15px 0;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Offcanvas Sidebar Styles */
+        .offcanvas.bg-chocolate {
+            background-color: var(--chocolate);
+            border-left: 1px solid rgba(200, 169, 106, 0.2);
+        }
+
+        .sidebar-link {
+            color: var(--white);
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.85rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            padding: 15px 0;
+            display: block;
+            border-bottom: 1px solid rgba(247, 243, 237, 0.05);
+            transition: 0.3s ease;
+            position: relative;
+        }
+
+        .sidebar-link::after {
+            content: '';
+            position: absolute;
+            bottom: -1px;
+            left: 0;
+            width: 0%;
+            height: 1px;
+            background: var(--champagne);
+            transition: 0.4s ease;
+        }
+
+        .sidebar-link:hover {
+            color: var(--champagne);
+            padding-left: 10px;
+        }
+
+        .sidebar-link:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        #hero {
+            height: 100vh;
+            background: url('assets/img/hero.jpg') no-repeat center center/cover;
+            background-attachment: fixed;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--white);
+        }
+
+        #hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to bottom, rgba(42, 30, 26, 0.6), rgba(94, 31, 44, 0.8));
+        }
+
+        .hero-content {
+            z-index: 2;
+        }
+
+        .hero-title {
+            font-size: 5rem;
+            letter-spacing: 5px;
+            margin-bottom: 1rem;
+            color: var(--white);
+        }
+
+        .hero-tagline {
+            font-size: 1.2rem;
+            letter-spacing: 4px;
+            color: var(--champagne);
+            text-transform: uppercase;
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 2;
+            animation: bounce 2s infinite;
+            color: var(--champagne);
+        }
+
+        @keyframes bounce {
+
+            0%,
+            20%,
+            50%,
+            80%,
+            100% {
+                transform: translateY(0) translateX(-50%);
+            }
+
+            40% {
+                transform: translateY(-15px) translateX(-50%);
+            }
+
+            60% {
+                transform: translateY(-7px) translateX(-50%);
+            }
+        }
+
+        /* Buttons */
+        .btn-luxury {
+            display: inline-block;
+            padding: 15px 35px;
+            border: 1px solid var(--champagne);
+            color: var(--champagne);
+            background: transparent;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 0.75rem;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .btn-luxury::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: var(--champagne);
+            transform: translate(-50%, -50%);
+            border-radius: 50%;
+            transition: width 0.6s ease, height 0.6s ease;
+            z-index: -1;
+        }
+
+        .btn-luxury:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+
+        .btn-luxury:hover {
+            color: var(--chocolate) !important;
+        }
+
+        /* Section Headers */
+        .section-header {
+            margin-bottom: 80px;
+            text-align: center;
+        }
+
+        .section-header h2 {
+            font-size: 3rem;
+            position: relative;
+            display: inline-block;
+            padding-bottom: 15px;
+            margin-bottom: 10px;
+        }
+
+        .section-header h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 40px;
+            height: 2px;
+            background: var(--champagne);
+        }
+
+        .section-subtitle {
+            font-size: 0.75rem;
+            letter-spacing: 4px;
+            color: var(--champagne);
+            text-transform: uppercase;
+            display: block;
+            margin-bottom: 15px;
+        }
+
+        /* Utility & Card Styles */
+        .luxury-card {
+            background: var(--white);
+            padding: 40px;
+            border-radius: 0;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.03);
+            transition: all 0.4s ease;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .luxury-card:hover {
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.08);
+            transform: translateY(-5px);
+        }
+
+        /* Fixed-height image components */
+        .fixed-img-container {
+            width: 100%;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .fixed-img {
+            width: 100%;
+            height: 350px;
+            object-fit: cover;
+            transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .fixed-img-sm {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+
+        /* Color Palette */
+        .color-block {
+            height: 160px;
+            width: 100%;
+            display: flex;
+            align-items: flex-end;
+            padding: 20px;
+            transition: 0.3s;
+            cursor: none;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .color-block:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            z-index: 10;
+        }
+
+        #pattern-section .pattern-overlay{
+            position:absolute;
+            inset:0;
+            background-image:url("assets/img/brand_pattern.png");
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: cover;
+            opacity: .3;
+            pointer-events:none;
+        }
+
+        /* Typography */
+        .type-display {
+            font-size: 4rem;
+            line-height: 1.1;
+        }
+
+        /* Masonry Gallery */
+        .masonry-grid {
+            column-count: 3;
+            column-gap: 1.5rem;
+        }
+
+        .masonry-item {
+            break-inside: avoid;
+            margin-bottom: 1.5rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .masonry-item img {
+            width: 100%;
+            display: block;
+            transition: 0.5s ease;
+        }
+
+        .masonry-item:hover img {
+            transform: scale(1.05);
+        }
+
+        @media (max-width: 991px) {
+            .masonry-grid {
+                column-count: 2;
+            }
+        }
+
+        @media (max-width: 575px) {
+            .masonry-grid {
+                column-count: 1;
+            }
+        }
+
+        /* Footer & Newsletter */
+        footer {
+            background-color: var(--chocolate);
+            color: var(--ivory);
+            padding: 100px 0 40px;
+        }
+
+        footer h3,
+        footer h6 {
+            color: var(--white) !important;
+        }
+
+        .footer-link {
+            color: rgba(247, 243, 237, 0.6);
+            transition: 0.3s;
+            font-size: 0.85rem;
+        }
+
+        .footer-link:hover {
+            color: var(--champagne);
+            padding-left: 5px;
+        }
+
+        /* Strict application of the user's orange color rule */
+        .newsletter-btn {
+            background-color: var(--newsletter-orange);
+            color: var(--white);
+            border: none;
+            transition: 0.3s ease;
+        }
+
+        .newsletter-btn:hover {
+            background-color: #ba4a00;
+            color: var(--white);
+        }
+
+        .newsletter-input:focus {
+            border-color: var(--newsletter-orange) !important;
+            box-shadow: none;
+        }
+    </style>
+</head>
+
+<body data-bs-spy="scroll" data-bs-target="#sidebarNav" data-bs-offset="100">
+
+    <!-- Custom Cursor -->
+    <div class="cursor-dot" id="cursor-dot"></div>
+    <div class="cursor-outline" id="cursor-outline"></div>
+
+    <!-- Scroll Progress -->
+    <div class="scroll-progress" id="scroll-progress"></div>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
+        <div class="container-fluid px-4 px-lg-5">
+            <a class="navbar-brand interactive" href="index.html">
+                <img src="assets/img/logo.png" alt="Layot Logo" style="height: 35px; object-fit: contain;">
+            </a>
+            <button class="navbar-toggler border-0 shadow-none interactive d-block" type="button"
+                data-bs-toggle="offcanvas" data-bs-target="#sidebarNav">
+                <i class="bi bi-list text-white fs-1"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Offcanvas Sidebar -->
+    <div class="offcanvas offcanvas-end bg-chocolate" tabindex="-1" id="sidebarNav">
+        <div class="offcanvas-header border-bottom border-light border-opacity-10 p-4">
+            <h5 class="offcanvas-title font-playfair text-champagne fs-4">Brand Guidelines</h5>
+            <button type="button" class="btn-close btn-close-white shadow-none interactive" data-bs-dismiss="offcanvas"
+                aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body p-4 d-flex flex-column justify-content-between">
+            <ul class="list-unstyled">
+                <li><a class="sidebar-link interactive" href="#introduction" data-bs-dismiss="offcanvas">01.
+                        Introduction</a></li>
+                <li><a class="sidebar-link interactive" href="#story" data-bs-dismiss="offcanvas">02. Brand Story</a>
+                </li>
+                <li><a class="sidebar-link interactive" href="#logo" data-bs-dismiss="offcanvas">03. Logo System</a>
+                </li>
+                <li><a class="sidebar-link interactive" href="#colors" data-bs-dismiss="offcanvas">04. Color Palette</a>
+                </li>
+                <li><a class="sidebar-link interactive" href="#typography" data-bs-dismiss="offcanvas">05.
+                        Typography</a></li>
+                <li><a class="sidebar-link interactive" href="#photography" data-bs-dismiss="offcanvas">06.
+                        Photography</a></li>
+                <li><a class="sidebar-link interactive" href="#brand-voice" data-bs-dismiss="offcanvas">07. Brand
+                        Voice</a></li>
+                <li><a class="sidebar-link interactive" href="#applications" data-bs-dismiss="offcanvas">08.
+                        Applications</a></li>
+                <li><a class="sidebar-link interactive" href="#downloads" data-bs-dismiss="offcanvas">09. Downloads</a>
+                </li>
+            </ul>
+            <div class="mt-5 pt-4 border-top border-light border-opacity-10 text-center">
+                <a href="index.html" class="btn-luxury champagne w-100 interactive text-center">Back to Website</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <header id="hero">
+        <div class="container hero-content">
+            <span class="hero-tagline" data-aos="fade-down" data-aos-duration="1500">Brand Guidelines</span>
+            <h1 class="hero-title font-playfair" data-aos="zoom-in" data-aos-duration="2000">LAYOT FAB STYLES</h1>
+            <p class="lead opacity-75 fw-light text-white" data-aos="fade-up" data-aos-duration="1500"
+                data-aos-delay="500">Wear It. Love It.</p>
+        </div>
+        <a href="#introduction" class="scroll-indicator interactive">
+            <i class="bi bi-chevron-down fs-3"></i>
+        </a>
+    </header>
+
+    <!-- Section 1: Introduction -->
+    <section id="introduction" class="bg-burgundy text-white">
+        <div class="container">
+            <div class="row align-items-center gx-5">
+                <div class="col-lg-5" data-aos="fade-right">
+                    <span class="section-subtitle">01 / Introduction</span>
+                    <h2 class="font-playfair display-5 mb-4 text-white">Our Brand</h2>
+                    <p class="lead text-white-50 mb-4">Layot Fab Styles is a premium fashion house dedicated to
+                        empowering elegance, celebrating femininity, and crafting timeless pieces that inspire
+                        confidence.
+                    </p>
+                    <p class="text-white-50 fw-light">Every detail of our brand identity reflects our passion for
+                        sophistication, quality, and the art of style. This document serves as the foundation for our
+                        visual and verbal identity.</p>
+                </div>
+                <div class="col-lg-7 mt-5 mt-lg-0" data-aos="fade-left">
+                    <div class="tilt" data-tilt data-tilt-max="3" data-tilt-speed="400">
+                        <img src="assets/img/hero.jpg" class="fixed-img shadow-sm border border-light border-opacity-25"
+                            alt="Luxury Fashion">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 2: Brand Story -->
+    <section id="story" class="bg-ivory">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="text-chocolate">Brand Story</h2>
+                <span class="section-subtitle mt-3">The Journey of Elegance</span>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="luxury-card text-center h-100 tilt bg-burgundy border-0" data-tilt data-tilt-max="2">
+                        <i class="bi bi-stars display-4 text-champagne mb-4 d-inline-block"></i>
+                        <h4 class="font-playfair text-white mb-3">The Beginning</h4>
+                        <p class="text-white-50 small fw-light mb-0">Founded with a vision to redefine modern elegance
+                            through meticulous craftsmanship and bespoke designs.</p>
+                    </div>
+                </div>
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="luxury-card text-center h-100 tilt bg-burgundy border-0" data-tilt data-tilt-max="2">
+                        <i class="bi bi-graph-up-arrow display-4 text-champagne mb-4 d-inline-block"></i>
+                        <h4 class="font-playfair text-white mb-3">Growth</h4>
+                        <p class="text-white-50 small fw-light mb-0">Our collections grew, reaching more individuals who
+                            love timeless style, expanding into ready-to-wear and bridal.</p>
+                    </div>
+                </div>
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
+                    <div class="luxury-card text-center h-100 tilt bg-burgundy border-0" data-tilt data-tilt-max="2">
+                        <i class="bi bi-infinity display-4 text-champagne mb-4 d-inline-block"></i>
+                        <h4 class="font-playfair text-white mb-3">The Future</h4>
+                        <p class="text-white-50 small fw-light mb-0">We continue to innovate and inspire with fashion
+                            that stands the test of time, maintaining our luxurious roots.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 3: Logo System (Updated to 3 columns, same height, non-circular brand mark) -->
+    <section id="logo" class="bg-chocolate">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="text-white">Logo System</h2>
+                <span class="section-subtitle mt-3">Visual Foundation</span>
+            </div>
+            <div class="row g-4 mb-5 align-items-center">
+                <!-- Primary Logo -->
+                <div class="col-md-4" data-aos="fade-up">
+                    <div class="luxury-card text-center d-flex align-items-center justify-content-center h-100 tilt bg-ivory border-0"
+                        data-tilt data-tilt-max="2">
+                        <img src="assets/img/logo_black.png" alt="Primary Logo" class="img-fluid"
+                            style="height: 80px; object-fit: contain;">
+                    </div>
+                    <h6 class="mt-4 text-center font-playfair text-white">Primary Logo</h6>
+                </div>
+                <!-- Secondary Logo -->
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="luxury-card text-center d-flex align-items-center justify-content-center h-100 tilt bg-ivory border-0"
+                        data-tilt data-tilt-max="2">
+                        <img src="assets/img/secondary_logo_black.png " alt="Secondary Logo" class="img-fluid"
+                            style="height: 80px; object-fit: contain;">
+                    </div>
+                    <h6 class="mt-4 text-center font-playfair text-white">Secondary Logo</h6>
+                </div>
+                <!-- Brand Mark -->
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="luxury-card text-center d-flex align-items-center justify-content-center h-100 tilt bg-ivory border-0"
+                        data-tilt data-tilt-max="2" style="border: 2px solid var(--champagne) !important;">
+                        <img src="assets/img/mark.png" alt="Brand Mark" class="img-fluid"
+                            style="height: 80px; object-fit: contain;">
+                    </div>
+                    <h6 class="mt-4 text-center font-playfair text-white">Brand Mark</h6>
+                </div>
+            </div>
+
+            <!-- Logo Usage -->
+            <div class="text-center mt-5 pt-5 mb-4" data-aos="fade-up">
+                <h4 class="font-playfair text-white">Incorrect Usage</h4>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-3" data-aos="zoom-in">
+                    <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=600&auto=format&fit=crop"
+                        class="fixed-img-sm mb-3" alt="Distorted bg">
+                    <p class="text-center text-white small"><i class="bi bi-x-circle text-danger me-1"></i> Do not place
+                        on busy backgrounds</p>
+                </div>
+                <div class="col-md-3" data-aos="zoom-in" data-aos-delay="100">
+                    <div class="bg-light fixed-img-sm d-flex align-items-center justify-content-center mb-3 border">
+                        <h3 class="font-playfair m-0 text-primary">LAYOT</h3>
+                    </div>
+                    <p class="text-center text-white small"><i class="bi bi-x-circle text-danger me-1"></i> Do not use
+                        unapproved colors</p>
+                </div>
+                <div class="col-md-3" data-aos="zoom-in" data-aos-delay="200">
+                    <div class="bg-light fixed-img-sm d-flex align-items-center justify-content-center mb-3 border">
+                        <h3 class="font-playfair m-0 shadow-lg">LAYOT</h3>
+                    </div>
+                    <p class="text-center text-white small"><i class="bi bi-x-circle text-danger me-1"></i> Do not add
+                        drop shadows</p>
+                </div>
+                <div class="col-md-3" data-aos="zoom-in" data-aos-delay="300">
+                    <div class="bg-light fixed-img-sm d-flex align-items-center justify-content-center mb-3 border">
+                        <h3 class="font-playfair m-0" style="transform: scaleX(2);">LAYOT</h3>
+                    </div>
+                    <p class="text-center text-white small"><i class="bi bi-x-circle text-danger me-1"></i> Do not
+                        stretch or distort</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 4: Color Palette -->
+    <section id="colors" class="bg-ivory">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="text-chocolate">Color Palette</h2>
+                <span class="section-subtitle mt-3">The Hues of Luxury</span>
+            </div>
+            <div class="row g-4">
+                <!-- Burgundy -->
+                <div class="col-md-4 col-lg-2" data-aos="fade-up">
+                    <div class="color-block shadow-sm" style="background-color: var(--burgundy);"
+                        onclick="copyHex('#5E1F2C')"></div>
+                    <div class="pt-3 text-center">
+                        <h6 class="text-chocolate text-uppercase mb-1">Burgundy</h6>
+                        <small class="text-muted d-block" style="font-size: 0.7rem;">HEX: #52171B</small>
+                        <small class="text-muted d-block" style="font-size: 0.7rem;">RGB: 94, 31, 44</small>
+                    </div>
+                </div>
+                <!-- Chocolate -->
+                <div class="col-md-4 col-lg-2" data-aos="fade-up" data-aos-delay="100">
+                    <div class="color-block shadow-sm" style="background-color: var(--chocolate);"
+                        onclick="copyHex('#2A1E1A')"></div>
+                    <div class="pt-3 text-center">
+                        <h6 class="text-chocolate text-uppercase mb-1">Chocolate</h6>
+                        <small class="text-muted d-block" style="font-size: 0.7rem;">HEX: #2A1E1A</small>
+                        <small class="text-muted d-block" style="font-size: 0.7rem;">RGB: 42, 30, 26</small>
+                    </div>
+                </div>
+                <!-- Ivory -->
+                <div class="col-md-4 col-lg-2" data-aos="fade-up" data-aos-delay="200">
+                    <div class="color-block shadow-sm" style="background-color: var(--ivory);"
+                        onclick="copyHex('#F7F3ED')"></div>
+                    <div class="pt-3 text-center">
+                        <h6 class="text-chocolate text-uppercase mb-1">Warm Ivory</h6>
+                        <small class="text-muted d-block" style="font-size: 0.7rem;">HEX: #F7F3ED</small>
+                        <small class="text-muted d-block" style="font-size: 0.7rem;">RGB: 247, 243, 237</small>
+                    </div>
+                </div>
+                <!-- Champagne -->
+                <div class="col-md-4 col-lg-2" data-aos="fade-up" data-aos-delay="300">
+                    <div class="color-block shadow-sm" style="background-color: var(--champagne);"
+                        onclick="copyHex('#C8A96A')"></div>
+                    <div class="pt-3 text-center">
+                        <h6 class="text-chocolate text-uppercase mb-1">Champagne</h6>
+                        <small class="text-muted d-block" style="font-size: 0.7rem;">HEX: #C8A96A</small>
+                        <small class="text-muted d-block" style="font-size: 0.7rem;">RGB: 200, 169, 106</small>
+                    </div>
+                </div>
+                <!-- Charcoal -->
+                <div class="col-md-4 col-lg-2" data-aos="fade-up" data-aos-delay="400">
+                    <div class="color-block shadow-sm" style="background-color: var(--charcoal);"
+                        onclick="copyHex('#222222')"></div>
+                    <div class="pt-3 text-center">
+                        <h6 class="text-chocolate text-uppercase mb-1">Charcoal</h6>
+                        <small class="text-muted d-block" style="font-size: 0.7rem;">HEX: #222222</small>
+                        <small class="text-muted d-block" style="font-size: 0.7rem;">RGB: 34, 34, 34</small>
+                    </div>
+                </div>
+                <!-- White -->
+                <div class="col-md-4 col-lg-2" data-aos="fade-up" data-aos-delay="500">
+                    <div class="color-block shadow-sm" style="background-color: var(--white);"
+                        onclick="copyHex('#FFFFFF')"></div>
+                    <div class="pt-3 text-center">
+                        <h6 class="text-chocolate text-uppercase mb-1">Pure White</h6>
+                        <small class="text-muted d-block" style="font-size: 0.7rem;">HEX: #FFFFFF</small>
+                        <small class="text-muted d-block" style="font-size: 0.7rem;">RGB: 255, 255, 255</small>
+                    </div>
+                </div>
+            </div>
+            <p class="text-center text-muted mt-5"><small><i class="bi bi-info-circle me-2"></i>Click any color block to
+                    copy HEX code</small></p>
+        </div>
+    </section>
+
+    <!-- Section 5: Typography (Burgundy contrast) -->
+    <section id="typography" class="bg-burgundy">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="text-white">Typography</h2>
+                <span class="section-subtitle mt-3">The Voice in Text</span>
+            </div>
+            <div class="row g-4">
+                <div class="col-lg-6" data-aos="fade-right">
+                    <div class="luxury-card h-100 bg-chocolate border-0">
+                        <span class="section-subtitle mb-2">Primary Font - Headings</span>
+                        <h2 class="font-playfair mb-4 text-white">Playfair Display</h2>
+                        <div class="type-display font-playfair mb-4 text-champagne">Aa</div>
+                        <p class="font-playfair fs-5 text-white-50 mb-2">A B C D E F G H I J K L M N O P Q R S T U V W X
+                            Y Z</p>
+                        <p class="font-playfair fs-5 text-white-50 mb-2">a b c d e f g h i j k l m n o p q r s t u v w x
+                            y z</p>
+                        <p class="font-playfair fs-5 text-white-50">0 1 2 3 4 5 6 7 8 9 & @ # % * ! ?</p>
+                    </div>
+                </div>
+                <div class="col-lg-6" data-aos="fade-left">
+                    <div class="luxury-card h-100 bg-chocolate border-0">
+                        <span class="section-subtitle mb-2">Secondary Font - Body</span>
+                        <h2 class="mb-4 text-white">Montserrat</h2>
+                        <div class="type-display mb-4 text-champagne">Aa</div>
+                        <p class="fs-5 text-white-50 fw-light mb-2">A B C D E F G H I J K L M N O P Q R S T U V W X Y Z
+                        </p>
+                        <p class="fs-5 text-white-50 fw-light mb-2">a b c d e f g h i j k l m n o p q r s t u v w x y z
+                        </p>
+                        <p class="fs-5 text-white-50 fw-light">0 1 2 3 4 5 6 7 8 9 & @ # % * ! ?</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row mt-5 pt-4">
+                <div class="col-12" data-aos="fade-up">
+                    <h4 class="font-playfair text-white mb-4 border-bottom border-light border-opacity-25 pb-3">
+                        Hierarchy</h4>
+                    <div class="d-flex align-items-center flex-wrap mb-4">
+                        <h1 class="font-playfair text-white m-0 me-4">Heading 1</h1>
+                        <span class="text-champagne small text-uppercase tracking-widest mt-2 mt-md-0">Playfair Display
+                            / Bold / 40px</span>
+                    </div>
+                    <div class="d-flex align-items-center flex-wrap mb-4">
+                        <h2 class="font-playfair text-white m-0 me-4">Heading 2</h2>
+                        <span class="text-champagne small text-uppercase tracking-widest mt-2 mt-md-0">Playfair Display
+                            / SemiBold / 32px</span>
+                    </div>
+                    <div class="d-flex align-items-center flex-wrap mb-4">
+                        <p class="m-0 me-4 fs-5 text-white">Body Text</p>
+                        <span class="text-champagne small text-uppercase tracking-widest mt-2 mt-md-0">Montserrat /
+                            Regular / 16px</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 6: Photography (Separated) -->
+    <section id="photography" class="bg-white">
+        <div class="container">
+            <div class="section-header text-center mb-5">
+                <h2 class="text-chocolate">Photography</h2>
+                <span class="section-subtitle mt-3">Visual Tone</span>
+            </div>
+
+            <div class="row justify-content-center">
+                <div class="col-lg-8 text-center mb-5">
+                    <p class="text-muted fw-light">Imagery should evoke feelings of premium quality, warmth, and
+                        timeless elegance. Focus on minimalist backgrounds, natural warm lighting, and confident, poised
+                        subjects.</p>
+                </div>
+            </div>
+
+            <div class="row g-4">
+                <div class="col-md-6" data-aos="fade-up">
+                    <img src="assets/img/hero3.jpg" class="fixed-img shadow-sm" alt="Good Photo 1">
+                </div>
+                <div class="col-md-6" data-aos="fade-up" data-aos-delay="100">
+                    <img src="assets/img/hero4.jpg" class="fixed-img shadow-sm" alt="Good Photo 2">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 7: Brand Voice (Separated) -->
+    <section id="brand-voice" class="bg-ivory">
+        <div class="container">
+            <div class="section-header text-center mb-5">
+                <h2 class="text-chocolate">Brand Voice</h2>
+                <span class="section-subtitle mt-3">How We Speak</span>
+            </div>
+
+            <div class="row g-4">
+                <div class="col-md-6" data-aos="fade-up">
+                    <div class="luxury-card h-100 bg-burgundy border-0">
+                        <h5 class="text-champagne font-playfair mb-4 border-bottom border-light border-opacity-25 pb-2">
+                            Tone of Voice</h5>
+                        <ul class="list-unstyled text-white-50 fw-light mb-0 lh-lg">
+                            <li class="mb-2"><i class="bi bi-check2 text-champagne me-3"></i> Elegant & Sophisticated
+                            </li>
+                            <li class="mb-2"><i class="bi bi-check2 text-champagne me-3"></i> Warm & Inviting</li>
+                            <li class="mb-2"><i class="bi bi-check2 text-champagne me-3"></i> Timeless & Confident</li>
+                            <li><i class="bi bi-check2 text-champagne me-3"></i> Professional yet Approachable</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="col-md-6" data-aos="fade-up" data-aos-delay="100">
+                    <div class="luxury-card h-100 bg-burgundy border-0">
+                        <h5 class="text-white font-playfair mb-4 border-bottom border-light border-opacity-25 pb-2">What
+                            to Avoid</h5>
+                        <ul class="list-unstyled text-white-50 fw-light mb-0 lh-lg">
+                            <li class="mb-2"><i class="bi bi-x text-danger me-3"></i> Trendy internet slang</li>
+                            <li class="mb-2"><i class="bi bi-x text-danger me-3"></i> Aggressive sales language</li>
+                            <li class="mb-2"><i class="bi bi-x text-danger me-3"></i> Overuse of emojis</li>
+                            <li><i class="bi bi-x text-danger me-3"></i> Cheap marketing gimmicks</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pattern System -->
+    <section id="pattern-section" class="position-relative overflow-hidden py-5"
+        style="background-color: var(--burgundy); min-height:500px;">
+
+        <!-- Brand Pattern Overlay -->
+        <div class="pattern-overlay"></div>
+
+        <!-- Optional dark overlay -->
+        <div class="position-absolute top-0 start-0 w-100 h-100" style="background: rgba(0,0,0,.18);"></div>
+
+        <div class="container position-relative z-1 text-center">
+
+            <h2 class="font-playfair display-4 mb-4 text-white">
+                Pattern System
+            </h2>
+
+            <p class="lead max-w-700 mx-auto text-white p-5 shadow-sm fw-light border-0" data-aos="zoom-in">
+
+                Our subtle repeating pattern is crafted from our monogram.
+                It features extremely low contrast, providing a woven textile
+                inspiration perfect for shopping bags, tissue paper and digital
+                backgrounds without overpowering the main content.
+
+            </p>
+
+        </div>
+
+    </section>
+
+    <!-- Section 12: Brand Applications (Masonry) -->
+    <section id="applications" class="bg-burgundy  border-top border-light">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="text-white">Applications</h2>
+                <span class="section-subtitle mt-3">The Brand in the Real World</span>
+            </div>
+
+            <div class="masonry-grid">
+                <div class="masonry-item" data-aos="fade-up">
+                    <a href="assets/img/websitemockups/packaging.jpg" data-lightbox="applications" data-title="Packaging Mockup">
+                        <img src="assets/img/websitemockups/packaging.jpg" alt="Packaging">
+                    </a>
+                </div>
+                <div class="masonry-item" data-aos="fade-up" data-aos-delay="100">
+                    <a href="assets/img/websitemockups/socialmedia2.jpg" data-lightbox="applications" data-title="Print Materials">
+                        <img src="assets/img/websitemockups/socialmedia2.jpg" alt="Print">
+                    </a>
+                </div>
+                <div class="masonry-item" data-aos="fade-up" data-aos-delay="200">
+                    <a href="assets/img/websitemockups/socialmedia.jpg" data-lightbox="applications" data-title="Apparel Tag">
+                        <img src="assets/img/websitemockups/socialmedia.jpg" alt="Tag">
+                    </a>
+                </div>
+                <div class="masonry-item" data-aos="fade-up" data-aos-delay="300">
+                    <a href="assets/img/websitemockups/socialmedia3.jpg" data-lightbox="applications" data-title="Storefront Signage">
+                        <img src="assets/img/websitemockups/socialmedia3.jpg" alt="Storefront">
+                    </a>
+                </div>
+                <div class="masonry-item" data-aos="fade-up" data-aos-delay="400">
+                    <a href="assets/img/websitemockups/businesscard.jpg" data-lightbox="applications" data-title="Digital Experience">
+                        <img src="assets/img/websitemockups/businesscard.jpg" alt="Digital">
+                    </a>
+                </div>
+                <div class="masonry-item" data-aos="fade-up" data-aos-delay="500">
+                    <a href="assets/img/websitemockups/socialmedia4.jpg" data-lightbox="applications" data-title="Digital Experience">
+                        <img src="assets/img/websitemockups/socialmedia4.jpg" alt="Digital">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 13: Downloads (Contrast adjustment to Chocolate background) -->
+    <section id="downloads" class="bg-white">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="text-burgundy">Downloads</h2>
+                <span class="section-subtitle mt-3 text-champagne">Brand Assets</span>
+            </div>
+        
+            <div class="row justify-content-center g-4 text-center">
+        
+                <!-- Logo Package -->
+                <div class="col-md-4" data-aos="zoom-in">
+                    <div class="luxury-card tilt h-100 bg-burgundy border-0" data-tilt data-tilt-max="2">
+                        <i class="bi bi-file-earmark-zip fs-1 text-champagne mb-4 d-inline-block"></i>
+        
+                        <h4 class="font-playfair text-white">Logo Package</h4>
+        
+                        <p class="text-white-50 small fw-light mb-4">
+                            Includes primary and secondary logo, brand mark and pattern.
+                        </p>
+        
+                        <a href="assets/img/Logo_Assets.rar" download
+                            class="btn-luxury w-100 interactive text-white border-white text-decoration-none d-inline-block text-center">
+                            <i class="bi bi-download me-2"></i>
+                            Download
+                        </a>
+                    </div>
+                </div>
+        
+                <!-- Gallery -->
+                <div class="col-md-4" data-aos="zoom-in" data-aos-delay="100">
+                    <div class="luxury-card tilt h-100 bg-burgundy border-0" data-tilt data-tilt-max="2">
+                        <i class="bi bi-images fs-1 text-champagne mb-4 d-inline-block"></i>
+        
+                        <h4 class="font-playfair text-white">Gallery Pictures</h4>
+        
+                        <p class="text-white-50 small fw-light mb-4">
+                            Includes pictures of dresses used throughout the website.
+                        </p>
+        
+                        <a href="assets/img/gallery_Layot.rar" download
+                            class="btn-luxury w-100 interactive text-white border-white text-decoration-none d-inline-block text-center">
+                            <i class="bi bi-download me-2"></i>
+                            Download
+                        </a>
+                    </div>
+                </div>
+        
+                <!-- Mockups -->
+                <div class="col-md-4" data-aos="zoom-in" data-aos-delay="200">
+                    <div class="luxury-card tilt h-100 bg-burgundy border-0" data-tilt data-tilt-max="2">
+                        <i class="bi bi-palette fs-1 text-champagne mb-4 d-inline-block"></i>
+        
+                        <h4 class="font-playfair text-white">Brand Mockups</h4>
+        
+                        <p class="text-white-50 small fw-light mb-4">
+                            Templates and mockups for digital and print applications.
+                        </p>
+        
+                        <a href="assets/img/Mockup_Layot.rar" download
+                            class="btn-luxury w-100 interactive text-white border-white text-decoration-none d-inline-block text-center">
+                            <i class="bi bi-download me-2"></i>
+                            Download
+                        </a>
+                    </div>
+                </div>
+        
+            </div>
+        </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="container">
+            <div class="row g-5 mb-5 pb-4 border-bottom" style="border-color: rgba(247, 243, 237, 0.1) !important;">
+                <div class="col-lg-4">
+                    <img src="assets/img/logo.png" alt="Layot Logo" class="mb-4"
+                        style="height: 40px; object-fit: contain;">
+                    <p class="text-ivory opacity-75 pe-lg-4 small">A luxury fashion house dedicated to empowering
+                        elegance, celebrating femininity, and crafting timeless pieces.</p>
+                </div>
+
+                <div class="col-lg-2 col-md-4">
+                    <h6 class="text-ivory text-uppercase tracking-widest mb-4" style="font-size: 0.75rem;">Quick Links
+                    </h6>
+                    <ul class="list-unstyled">
+                        <li class="mb-3"><a href="index.html" class="footer-link interactive">Home</a></li>
+                        <li class="mb-3"><a href="about.html" class="footer-link interactive">About Us</a></li>
+                        <li class="mb-3"><a href="gallery.html" class="footer-link interactive">Gallery</a></li>
+                        <li class="mb-3"><a href="contact.html" class="footer-link interactive">Contact</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-lg-2 col-md-4">
+                    <h6 class="text-ivory text-uppercase tracking-widest mb-4" style="font-size: 0.75rem;">Services</h6>
+                    <ul class="list-unstyled">
+                        <li class="mb-3"><a href="gallery.html" class="footer-link interactive">Corporate Wear</a></li>
+                        <li class="mb-3"><a href="gallery.html" class="footer-link interactive">Ready-to-Wear</a></li>
+                        <li class="mb-3"><a href="gallery.html" class="footer-link interactive">Bespoke</a></li>
+                        <li class="mb-3"><a href="gallery.html" class="footer-link interactive">Bridal Wear</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-lg-4 col-md-4">
+                    <h6 class="text-ivory text-uppercase tracking-widest mb-4" style="font-size: 0.75rem;">Contact Us
+                    </h6>
+                    <ul class="list-unstyled text-ivory opacity-75 small lh-lg mb-4">
+                        <li class="mb-2"><i class="bi bi-telephone text-champagne me-3"></i> 0810 295 7887</li>
+                        <li class="mb-2"><i class="bi bi-envelope text-champagne me-3"></i> akindiyot@gmail.com
+                        </li>
+                        <li class="mb-2"><i class="bi bi-geo-alt text-champagne me-3"></i> Akobo, Ibadan, Nigeria.</li>
+                    </ul>
+                    <div class="d-flex gap-4">
+                        <a href="https://www.instagram.com/layot_styles/"
+                            class="text-ivory opacity-50 hover-opacity-100 interactive"><i
+                                class="bi bi-instagram fs-5"></i></a>
+                        <a href="https://www.tiktok.com/@layot_styles1"
+                            class="text-ivory opacity-50 hover-opacity-100 interactive"><i
+                                class="bi bi-tiktok fs-5"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="d-flex flex-column flex-md-row justify-content-between align-items-center">
+                <p class="text-ivory opacity-50 small mb-2 mb-md-0" style="font-size: 0.65rem; letter-spacing: 1px;">
+                    &copy; 2026 LAYOT FAB STYLES. DESIGNED BY <a href="https://eleojoarawa.vercel.app/">ELEOJO
+                        ARAWA.</a>
+                </p>
+                <a href="#hero"
+                    class="text-champagne small text-uppercase tracking-widest interactive d-flex align-items-center"
+                    style="font-size: 0.65rem;">
+                    Back to Top <i class="bi bi-arrow-up ms-2"></i>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.0/vanilla-tilt.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/js/lightbox-plus-jquery.min.js"></script>
+
+    <script>
+        // Page Loader
+        window.addEventListener('load', () => {
+            const loader = document.getElementById('loader');
+            if (loader) {
+                loader.style.opacity = '0';
+                setTimeout(() => {
+                    loader.style.display = 'none';
+
+                    // Init GSAP Hero Animation after load
+                    if (typeof gsap !== 'undefined') {
+                        gsap.from(".hero-title", { duration: 1.5, y: 50, opacity: 0, ease: "power3.out" });
+                        gsap.from(".hero-tagline", { duration: 1.5, y: 20, opacity: 0, ease: "power3.out", delay: 0.5 });
+                    }
+                }, 1000);
+            }
+        });
+
+        // Init AOS (Continuous scroll animations remain active)
+        AOS.init({
+            duration: 1000,
+            easing: 'ease-out-cubic',
+            once: false,
+            mirror: true,
+            offset: 50
+        });
+
+        // Vanilla Tilt Init
+        VanillaTilt.init(document.querySelectorAll(".tilt"), {
+            max: 5,
+            speed: 400,
+            glare: true,
+            "max-glare": 0.05,
+        });
+
+        // Custom Cursor Logic
+        const cursorDot = document.getElementById("cursor-dot");
+        const cursorOutline = document.getElementById("cursor-outline");
+        window.addEventListener("mousemove", function (e) {
+            const posX = e.clientX;
+            const posY = e.clientY;
+
+            cursorDot.style.left = `${posX}px`;
+            cursorDot.style.top = `${posY}px`;
+
+            cursorOutline.animate({
+                left: `${posX}px`,
+                top: `${posY}px`
+            }, { duration: 500, fill: "forwards" });
+        });
+
+        // Navbar & Scroll Progress
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('mainNav');
+            const scrollProgress = document.getElementById('scroll-progress');
+
+            const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = (winScroll / height) * 100;
+            scrollProgress.style.width = scrolled + "%";
+
+            if (window.scrollY > 100) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Copy HEX to Clipboard Function
+        function copyHex(hex) {
+            navigator.clipboard.writeText(hex).then(() => {
+                const originalCursorColor = cursorDot.style.backgroundColor;
+                cursorDot.style.backgroundColor = '#28a745'; // Quick success flash
+                setTimeout(() => {
+                    cursorDot.style.backgroundColor = originalCursorColor;
+                }, 500);
+            });
+        }
+    </script>
+</body>
+
+</html>
