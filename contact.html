@@ -147,7 +147,7 @@
             z-index: 10001;
         }
 
-        /* Navigation (Transparent to Solid) */
+        /* Navigation */
         .navbar {
             transition: background-color 0.4s ease, padding 0.4s ease;
             padding: 25px 0;
@@ -229,7 +229,7 @@
         }
 
         .hero-title {
-            font-size: 4.5rem;
+            font-size: 3rem;
             line-height: 1.1;
             letter-spacing: 2px;
             margin-bottom: 1.5rem;
@@ -250,7 +250,6 @@
             display: block;
         }
 
-        /* Bouncing Scroll Indicator */
         .scroll-indicator {
             position: absolute;
             bottom: 40px;
@@ -368,6 +367,251 @@
             pointer-events: none;
         }
 
+        /* Form Container Styles */
+        .form-container {
+            background: var(--chocolate);
+            padding: 60px 40px;
+            border: 1px solid rgba(200, 169, 106, 0.2);
+            position: relative;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(200, 169, 106, 0.05) 0%, transparent 100%);
+            pointer-events: none;
+        }
+
+        /* Contact Form Input Styles for Dark Background */
+        .luxury-input {
+            background: transparent;
+            border: none;
+            border-bottom: 1px solid rgba(247, 243, 237, 0.2);
+            border-radius: 0;
+            padding: 15px 0;
+            color: var(--ivory);
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            box-shadow: none !important;
+        }
+
+        .luxury-input:focus {
+            border-color: var(--champagne);
+            background: transparent;
+            color: var(--ivory);
+            outline: none;
+        }
+
+        .luxury-input::placeholder {
+            color: rgba(247, 243, 237, 0.5);
+            font-weight: 300;
+            letter-spacing: 1px;
+        }
+
+        select.luxury-input {
+            color: rgba(247, 243, 237, 0.5);
+        }
+
+        select.luxury-input:focus,
+        select.luxury-input:valid {
+            color: var(--ivory);
+        }
+
+        select.luxury-input option {
+            background: var(--chocolate);
+            color: var(--ivory);
+            padding: 10px;
+        }
+
+        .btn-luxury {
+            display: inline-block;
+            padding: 15px 35px;
+            border: 1px solid var(--champagne);
+            color: var(--champagne);
+            background: transparent;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 0.75rem;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .btn-luxury::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: var(--champagne);
+            transform: translate(-50%, -50%);
+            border-radius: 50%;
+            transition: width 0.6s ease, height 0.6s ease;
+            z-index: -1;
+        }
+
+        .btn-luxury:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+
+        .btn-luxury:hover {
+            color: var(--chocolate) !important;
+        }
+
+        /* WhatsApp Floating Container & Message */
+        .whatsapp-container {
+            position: fixed;
+            bottom: 40px;
+            right: 40px;
+            z-index: 10000;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            opacity: 0;
+            /* Hidden initially */
+            transform: translateY(20px);
+            pointer-events: none;
+            /* Prevent clicks while hidden */
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .whatsapp-container.show {
+            opacity: 1;
+            transform: translateY(0);
+            pointer-events: all;
+        }
+
+        .whatsapp-message {
+            background: var(--burgundy);
+            color: var(--white);
+            padding: 10px 20px;
+            border-radius: 20px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 500;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            position: relative;
+            animation: float-msg 3s ease-in-out infinite;
+        }
+
+        /* Little pointer triangle */
+        .whatsapp-message::after {
+            content: '';
+            position: absolute;
+            right: -6px;
+            top: 50%;
+            transform: translateY(-50%);
+            border-width: 6px 0 6px 6px;
+            border-style: solid;
+            border-color: transparent transparent transparent var(--burgundy);
+        }
+
+        @keyframes float-msg {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-5px);
+            }
+        }
+
+        .whatsapp-float {
+            width: 60px;
+            height: 60px;
+            background-color: #25d366;
+            color: #FFF;
+            border-radius: 50px;
+            text-align: center;
+            font-size: 30px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.05);
+            color: #fff;
+            box-shadow: 0 15px 25px rgba(37, 211, 102, 0.3);
+        }
+
+        .whatsapp-float::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border-radius: 50%;
+            border: 2px solid #25d366;
+            animation: pulse 2s infinite;
+            z-index: -1;
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+                opacity: 0.8;
+            }
+
+            100% {
+                transform: scale(1.5);
+                opacity: 0;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .whatsapp-container {
+                bottom: 20px;
+                right: 20px;
+            }
+
+            .whatsapp-float {
+                width: 50px;
+                height: 50px;
+                font-size: 25px;
+            }
+
+            .whatsapp-message {
+                display: none;
+                /* Hide message on small screens */
+            }
+        }
+
+        /* Modal Styles */
+        .modal-content {
+            background-color: var(--chocolate);
+            color: var(--ivory);
+            border: 1px solid rgba(200, 169, 106, 0.2);
+            border-radius: 0;
+        }
+
+        .modal-header {
+            border-bottom: 1px solid rgba(200, 169, 106, 0.2);
+        }
+
+        .modal-footer {
+            border-top: 1px solid rgba(200, 169, 106, 0.2);
+        }
+
+        .btn-close-white {
+            filter: invert(1) grayscale(100%) brightness(200%);
+        }
+
         /* Footer & Newsletter */
         footer {
             background-color: var(--chocolate);
@@ -440,7 +684,6 @@
             <button type="button" class="btn-close btn-close-white shadow-none interactive" data-bs-dismiss="offcanvas"
                 aria-label="Close"></button>
         </div>
-        <!-- Left-aligned, top-anchored layout from Brand Guidelines -->
         <div class="offcanvas-body p-4 d-flex flex-column justify-content-between">
             <ul class="list-unstyled">
                 <li><a class="sidebar-link interactive" href="index.html">01. Home</a></li>
@@ -450,10 +693,10 @@
             </ul>
             <div class="mt-auto border-top border-light border-opacity-10 pt-4 text-center">
                 <div class="d-flex justify-content-center gap-4">
-                    <a href="#" class="text-champagne hover-opacity-100 interactive"><i
-                            class="bi bi-instagram fs-5"></i></a>
-                    <a href="#" class="text-champagne hover-opacity-100 interactive"><i
-                            class="bi bi-tiktok fs-5"></i></a>
+                    <a href="https://www.instagram.com/layot_styles/"
+                        class="text-champagne hover-opacity-100 interactive"><i class="bi bi-instagram fs-5"></i></a>
+                    <a href="https://www.tiktok.com/@layot_styles1"
+                        class="text-champagne hover-opacity-100 interactive"><i class="bi bi-tiktok fs-5"></i></a>
                 </div>
             </div>
         </div>
@@ -473,7 +716,6 @@
             </p>
         </div>
 
-        <!-- Scroll Indicator Arrow -->
         <a href="#contact-details" class="scroll-indicator interactive">
             <i class="bi bi-chevron-down fs-3"></i>
         </a>
@@ -481,7 +723,6 @@
 
     <!-- Elevated Contact Details Section -->
     <section id="contact-details" class="bg-ivory py-5 position-relative overflow-hidden">
-        <!-- Subtle background typographic watermark -->
         <h1 class="font-playfair watermark-text">LAYOT</h1>
 
         <div class="container py-5 position-relative z-1">
@@ -540,14 +781,13 @@
                 </div>
             </div>
 
-            <!-- Social Links -->
             <div class="mt-5 pt-5 text-center" data-aos="fade-up" data-aos-delay="400">
-                <p class="font-playfair fs-5 mb-4">Follow Our Journey</p>
+                <p class="font-playfair fs-5 mb-4 text-chocolate">Follow Our Journey</p>
                 <div class="d-flex justify-content-center gap-3 flex-wrap">
-                    <a href="#" class="social-pill inteve">
+                    <a href="https://www.instagram.com/layot_styles/" class="social-pill interactive">
                         <i class="bi bi-instagram fs-5 me-2"></i> Instagram
                     </a>
-                    <a href="#" class="social-pill interactive">
+                    <a href="https://www.tiktok.com/@layot_styles1" class="social-pill interactive">
                         <i class="bi bi-tiktok fs-5 me-2"></i> TikTok
                     </a>
                 </div>
@@ -555,17 +795,91 @@
         </div>
     </section>
 
-    <!-- Footer -->
+    <!-- Highlighted Contact Form Section -->
+    <section id="contact-form" class="bg-white py-5">
+        <div class="container py-5">
+            <div class="text-center mb-5 pb-4" data-aos="fade-up">
+                <span class="section-subtitle text-champagne mb-2">Send A Message</span>
+                <h2 class="font-playfair display-5 text-chocolate">We'd Love To Hear From You</h2>
+                <div class="mx-auto mt-4" style="width: 40px; height: 1px; background: var(--champagne);"></div>
+            </div>
+
+            <div class="row justify-content-center">
+                <div class="col-lg-8" data-aos="fade-up" data-aos-delay="100">
+                    <div class="form-container">
+                        <!-- Formspree Integration with AJAX -->
+                        <form id="layot-contact-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+                            <div class="row g-4">
+                                <div class="col-md-6">
+                                    <input type="text" name="name" class="form-control luxury-input interactive"
+                                        placeholder="Your Name" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <input type="email" name="email" class="form-control luxury-input interactive"
+                                        placeholder="Your Email" required>
+                                </div>
+                                <div class="col-12">
+                                    <select name="service" class="form-select luxury-input interactive" required>
+                                        <option value="" disabled selected>What service do you need?</option>
+                                        <option value="General Inquiry">General Inquiry</option>
+                                        <option value="Bespoke / Custom Fit">Sew A Fit (Bespoke)</option>
+                                        <option value="Ready-to-Wear">Ready-to-Wear</option>
+                                        <option value="Bridal Wear">Bridal Wear</option>
+                                        <option value="Fashion Training">Fashion Training</option>
+                                    </select>
+                                </div>
+                                <div class="col-12">
+                                    <input type="text" name="subject" class="form-control luxury-input interactive"
+                                        placeholder="Subject" required>
+                                </div>
+                                <div class="col-12">
+                                    <textarea name="message" class="form-control luxury-input interactive" rows="5"
+                                        placeholder="Your Message" required></textarea>
+                                </div>
+                                <div class="col-12 text-center mt-4">
+                                    <button type="submit" class="btn-luxury champagne interactive w-100"
+                                        id="submit-btn">Send Message</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modal for Form Submission Status -->
+    <div class="modal fade" id="formStatusModal" tabindex="-1" aria-labelledby="formStatusModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title font-playfair text-champagne" id="formStatusModalLabel">Message Status</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
+                </div>
+                <div class="modal-body text-center py-4" id="formStatusMessage">
+                    <!-- Status message will be injected here -->
+                </div>
+                <div class="modal-footer justify-content-center">
+                    <button type="button" class="btn-luxury champagne interactive px-4 py-2"
+                        data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Footer -->
     <footer id="contact">
         <div class="container">
             <div class="row g-5 mb-5 pb-4 border-bottom" style="border-color: rgba(247, 243, 237, 0.1) !important;">
                 <div class="col-lg-4">
-                    <img src="assets/img/logo.png" alt="Layot Logo" class="mb-4" style="height: 40px; object-fit: contain;">
+                    <img src="assets/img/logo.png" alt="Layot Logo" class="mb-4"
+                        style="height: 40px; object-fit: contain;">
                     <p class="text-ivory opacity-75 pe-lg-4 small">A luxury fashion house dedicated to empowering
                         elegance, celebrating femininity, and crafting timeless pieces.</p>
                 </div>
-    
+
                 <div class="col-lg-2 col-md-4">
                     <h6 class="text-ivory text-uppercase tracking-widest mb-4" style="font-size: 0.75rem;">Quick Links
                     </h6>
@@ -576,7 +890,7 @@
                         <li class="mb-3"><a href="contact.html" class="footer-link interactive">Contact</a></li>
                     </ul>
                 </div>
-    
+
                 <div class="col-lg-2 col-md-4">
                     <h6 class="text-ivory text-uppercase tracking-widest mb-4" style="font-size: 0.75rem;">Services</h6>
                     <ul class="list-unstyled">
@@ -586,7 +900,7 @@
                         <li class="mb-3"><a href="gallery.html" class="footer-link interactive">Bridal Wear</a></li>
                     </ul>
                 </div>
-    
+
                 <div class="col-lg-4 col-md-4">
                     <h6 class="text-ivory text-uppercase tracking-widest mb-4" style="font-size: 0.75rem;">Contact Us
                     </h6>
@@ -606,10 +920,11 @@
                     </div>
                 </div>
             </div>
-    
+
             <div class="d-flex flex-column flex-md-row justify-content-between align-items-center">
                 <p class="text-ivory opacity-50 small mb-2 mb-md-0" style="font-size: 0.65rem; letter-spacing: 1px;">
-                    &copy; 2026 LAYOT FAB STYLES. DESIGNED BY <a href="https://eleojoarawa.vercel.app/">ELEOJO ARAWA.</a>
+                    &copy; 2026 LAYOT FAB STYLES. DESIGNED BY <a href="https://eleojoarawa.vercel.app/"
+                        class="text-champagne interactive">ELEOJO ARAWA.</a>
                 </p>
                 <a href="#hero"
                     class="text-champagne small text-uppercase tracking-widest interactive d-flex align-items-center"
@@ -619,6 +934,15 @@
             </div>
         </div>
     </footer>
+
+    <!-- Floating WhatsApp Container -->
+    <div class="whatsapp-container" id="whatsapp-container">
+        <div class="whatsapp-message">Let's Bring Your Vision to Life <span class="ms-1">👋</span></div>
+        <a href="https://wa.me/2348102957887" class="whatsapp-float interactive" target="_blank"
+            aria-label="Chat with us on WhatsApp">
+            <i class="bi bi-whatsapp"></i>
+        </a>
+    </div>
 
     <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
@@ -671,6 +995,62 @@
                 navbar.classList.add('scrolled');
             } else {
                 navbar.classList.remove('scrolled');
+            }
+        });
+
+        // WhatsApp Delay Logic
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                const waContainer = document.getElementById('whatsapp-container');
+                if (waContainer) {
+                    waContainer.classList.add('show');
+                }
+            }, 3000); // 3 seconds delay before the widget appears
+        });
+
+        // Formspree AJAX Submission Logic
+        const contactForm = document.getElementById('layot-contact-form');
+        const submitBtn = document.getElementById('submit-btn');
+        const statusModal = new bootstrap.Modal(document.getElementById('formStatusModal'));
+        const statusMessage = document.getElementById('formStatusMessage');
+
+        contactForm.addEventListener('submit', async function (e) {
+            e.preventDefault();
+
+            // Change button state
+            const originalBtnText = submitBtn.innerHTML;
+            submitBtn.innerHTML = 'Sending...';
+            submitBtn.disabled = true;
+
+            const data = new FormData(contactForm);
+
+            try {
+                const response = await fetch(contactForm.action, {
+                    method: 'POST',
+                    body: data,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                });
+
+                if (response.ok) {
+                    statusMessage.innerHTML = '<i class="bi bi-check-circle display-1 text-champagne mb-3 d-block"></i><p class="lead">Thank you! Your message has been sent successfully. We will get back to you shortly.</p>';
+                    contactForm.reset();
+                } else {
+                    const responseData = await response.json();
+                    if (Object.hasOwn(responseData, 'errors')) {
+                        statusMessage.innerHTML = `<i class="bi bi-x-circle display-1 text-danger mb-3 d-block"></i><p class="lead">${responseData["errors"].map(error => error["message"]).join(", ")}</p>`;
+                    } else {
+                        statusMessage.innerHTML = '<i class="bi bi-exclamation-circle display-1 text-danger mb-3 d-block"></i><p class="lead">Oops! There was a problem submitting your form.</p>';
+                    }
+                }
+            } catch (error) {
+                statusMessage.innerHTML = '<i class="bi bi-exclamation-circle display-1 text-danger mb-3 d-block"></i><p class="lead">Oops! There was a problem submitting your form.</p>';
+            } finally {
+                // Restore button and show modal
+                submitBtn.innerHTML = originalBtnText;
+                submitBtn.disabled = false;
+                statusModal.show();
             }
         });
     </script>
